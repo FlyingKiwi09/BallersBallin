@@ -6,6 +6,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -21,7 +22,7 @@ public class Main extends Application {
 	private Stage primaryStage;
 	
 	private Scene loginScene;
-	private Scene myLeaguesScene;
+	private MyLeaguesScene myLeaguesScene;
 	private Scene leagueScene;
 	private Scene teamScene;
 	private Scene playerScene;
@@ -36,7 +37,7 @@ public class Main extends Application {
 		try {
 			// set up all the scenes
 			setUpLoginScene();
-			setUpMyLeaguesScene();
+			myLeaguesScene = new MyLeaguesScene();
 			setUpLeagueScene();
 			setUpTeamScene();
 			setUpPlayerScene();
@@ -97,17 +98,9 @@ public class Main extends Application {
 		
 	}
 	
-	private void setUpMyLeaguesScene() {
-		VBox root = new VBox();
-		myLeaguesScene = new Scene(root,400,400);
-		myLeaguesScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-		
-		HBox navBar = new HBox();
-		Text title = new Text("My Leagues");
-		
-		root.getChildren().addAll(navBar, title);
-		
-	}
+	
+	
+	
 	
 	private void setUpLeagueScene() {
 		
@@ -136,6 +129,13 @@ public class Main extends Application {
 	// update method to update the myLeaguesScene based on user recieved back from controller
 	// for now myLeaguesScene is shown directly from the loginButton...
 	public void showMyLeaguesScene() {
+		
+		//TODO: 
+		
+		String[] leagues = {"league 1", "league 2", "league 3"};
+		myLeaguesScene.updateLeaguesList(leagues);
+		
+		
 		this.primaryStage.setScene(myLeaguesScene);
 	}
 	
