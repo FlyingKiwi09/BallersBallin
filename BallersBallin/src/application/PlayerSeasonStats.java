@@ -10,8 +10,14 @@ public class PlayerSeasonStats {
 	private int totalAssists;
 	private int totalRebounds;
 	private int totalTimePlayed;
-	
 	private int playerSeasonScore;
+	
+	private double pointsAverage;
+	private double assistsAverage;
+	private double reboundsAverage;
+	private double timePlayedAverage;
+	private double playerScoreAverage;
+	
 	
 	public PlayerSeasonStats() {
 		
@@ -23,6 +29,25 @@ public class PlayerSeasonStats {
 		this.totalTimePlayed = 0;
 		
 		this.playerSeasonScore = 0;
+		
+		this.pointsAverage = 0;
+		this.assistsAverage = 0;
+		this.reboundsAverage = 0;
+		this.timePlayedAverage = 0;
+		this.playerScoreAverage = 0;
+	}
+	
+	
+	
+	public void updateAverages() {
+		
+		int games = gameStatistics.size();
+		
+		this.pointsAverage = totalPoints/games;
+		this.assistsAverage = totalAssists/games;
+		this.reboundsAverage = totalRebounds/games;
+		this.timePlayedAverage = totalTimePlayed/games;
+		this.playerScoreAverage = playerSeasonScore/games;
 		
 	}
 	
@@ -37,7 +62,69 @@ public class PlayerSeasonStats {
 		
 		this.playerSeasonScore += pgs.getPlayerGameScore();
 		
+		this.updateAverages();
+		
 	}
+
+	public double getPointsAverage() {
+		return pointsAverage;
+	}
+
+
+
+	public void setPointsAverage(double pointsAverage) {
+		this.pointsAverage = pointsAverage;
+	}
+
+
+
+	public double getAssistsAverage() {
+		return assistsAverage;
+	}
+
+
+
+	public void setAssistsAverage(double assistsAverage) {
+		this.assistsAverage = assistsAverage;
+	}
+
+
+
+	public double getReboundsAverage() {
+		return reboundsAverage;
+	}
+
+
+
+	public void setReboundsAverage(double reboundsAverage) {
+		this.reboundsAverage = reboundsAverage;
+	}
+
+
+
+	public double getTimePlayedAverage() {
+		return timePlayedAverage;
+	}
+
+
+
+	public void setTimePlayedAverage(double timePlayedAverage) {
+		this.timePlayedAverage = timePlayedAverage;
+	}
+
+
+
+	public double getPlayerScoreAverage() {
+		return playerScoreAverage;
+	}
+
+
+
+	public void setPlayerScoreAverage(double playerScoreAverage) {
+		this.playerScoreAverage = playerScoreAverage;
+	}
+
+
 
 	public ArrayList<PlayerGameStats> getGameStatistics() {
 		return gameStatistics;
