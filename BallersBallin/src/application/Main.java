@@ -94,7 +94,7 @@ public class Main extends Application {
 			// controller will then reply with method call to show error message or homepage 
 			// for now homepage method call is here....
 			
-			showMyLeaguesScene();
+			//send name and passowrod to controller
 		});
 		
 		// add to root
@@ -132,13 +132,8 @@ public class Main extends Application {
 	// TODO: update method to accept a User from the controller
 	// update method to update the myLeaguesScene based on user recieved back from controller
 	// for now myLeaguesScene is shown directly from the loginButton...
-	public void showMyLeaguesScene() {
+	public void showMyLeaguesScene(ArrayList<League> leagues) {
 
-		// hard coded leagues for UI demo
-		ArrayList<String> leagues = new ArrayList<>();
-		leagues.add("League 1");
-		leagues.add("League 2");
-		
 		// update leagues list
 		myLeaguesScene.updateLeaguesList(leagues);
 		
