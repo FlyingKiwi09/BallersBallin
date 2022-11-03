@@ -7,6 +7,10 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaFX"/>
+<<<<<<< BallersBallin/.classpath
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaFX-Lib"/>
+=======
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/javafx"/>
+>>>>>>> BallersBallin/.classpath
 	<classpathentry kind="output" path="bin"/>
 </classpath>
