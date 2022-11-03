@@ -15,7 +15,7 @@ public class Team {
 	
 	
 	public Team(String name, ArrayList<Player> players, ArrayList<TeamRoundStats> teamRoundHistory) {
-		this.setName(name);
+		this.name = name;
 		this.budget = 50;
 		this.spending = 0;
 		this.totalscore = 0;
@@ -44,11 +44,11 @@ public class Team {
 		this.teamRoundHistory = teamRoundHistory;
 	}
 
-	String getName() {
+	public String getName() {
 		return name;
 	}
 
-	void setName(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 

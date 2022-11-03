@@ -11,6 +11,7 @@ public class League {
 	
 	
 	public League(String name, ArrayList<Team> teams, ArrayList<LeagueRoundStats> weeklyLeagueStats,FantasyLeagueAdministrator Administrator ) {
+		this.name = name;
 		this.teams = teams;
 		this.weeklyLeagueStats = weeklyLeagueStats;
 		this.Administrator = Administrator;

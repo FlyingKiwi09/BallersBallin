@@ -18,14 +18,17 @@ import javafx.scene.text.Text;
 //test branch
 public class Main extends Application {
 	
-	private final int WIDTH = 200;
-	private final int HEIGHT = 400;
+	//test user for testing the UI until it gets connected to the controller
+	private User testUser;
+	
+	private final int WIDTH = 390;
+	private final int HEIGHT = 550;
 	
 	private Stage primaryStage;
 	
 	private Scene loginScene;
 	private MyLeaguesScene myLeaguesScene;
-	private Scene leagueScene;
+	private LeagueScene leagueScene;
 	private Scene teamScene;
 	private Scene playerScene;
 	private Scene transferScene;
@@ -39,10 +42,13 @@ public class Main extends Application {
 		this.primaryStage = primaryStage;
 		
 		try {
+			//set up the test user
+			setUpTestUser();
+			
 			// set up all the scenes
 			setUpLoginScene();
-			myLeaguesScene = new MyLeaguesScene();
-			setUpLeagueScene();
+			myLeaguesScene = new MyLeaguesScene(this);
+			leagueScene = new LeagueScene(this);
 			setUpTeamScene();
 			setUpPlayerScene();
 			setUpTransferScene();
@@ -94,7 +100,8 @@ public class Main extends Application {
 			// controller will then reply with method call to show error message or homepage 
 			// for now homepage method call is here....
 			
-			//send name and passowrod to controller
+			
+			showMyLeaguesScene(testUser.getLeagues());
 		});
 		
 		// add to root
@@ -141,4 +148,77 @@ public class Main extends Application {
 		this.primaryStage.setScene(myLeaguesScene.getMyLeaguesScene());
 	}
 	
+	public void showLeagueScene(League targetLeague) {
+		// update teams list
+		leagueScene.updateTeamsList(targetLeague);
+		
+		
+		// set leagueScene to primary stage
+		this.primaryStage.setScene(leagueScene.getLeagueScene());
+		
+	}
+	
+	
+	private void setUpTestUser() {
+		
+		
+		//players
+		ArrayList<Player> myPlayers = new ArrayList<Player>();
+		myPlayers.add(new Player(Position.CENTER, "JP", "Wellington", 1, 100000));
+		myPlayers.add(new Player(Position.POINT_GUARD, "Jessie", "Wellington", 3, 200000));
+		myPlayers.add(new Player(Position.POWER_FORWARD, "Tom", "Wellington", 5, 150000));
+		myPlayers.add(new Player(Position.SMALL_FORWARD, "Harry", "Wellington", 7, 170000));
+		myPlayers.add(new Player(Position.CENTER, "Keifer", "Wellington", 9, 220000));
+		myPlayers.add(new Player(Position.SHOOTING_GUARD, "Alina", "Wellington", 11, 90000));
+		
+		
+		ArrayList<Player> friendsPlayers = new ArrayList<Player>();
+		friendsPlayers.add(new Player(Position.CENTER, "Josh", "Auckland", 2, 600000));
+		friendsPlayers.add(new Player(Position.SHOOTING_GUARD, "Deb", "Christchurch", 4, 700000));
+		friendsPlayers.add(new Player(Position.SHOOTING_GUARD, "Jude", "Wellington", 6, 300000));
+		friendsPlayers.add(new Player(Position.POINT_GUARD, "Sarah", "Wellington", 8,320000));
+		friendsPlayers.add(new Player(Position.SMALL_FORWARD, "Ali", "Wellington", 10, 1000000));
+		friendsPlayers.add(new Player(Position.POWER_FORWARD, "Miro", "Wellington", 12, 230000));
+		
+		//round histories
+		ArrayList<TeamRoundStats> myRoundsHistory = new ArrayList<TeamRoundStats>();
+		
+		ArrayList<TeamRoundStats> friendsRoundsHistory = new ArrayList<TeamRoundStats>();
+		
+		//test user team
+		Team testUserTeam = new Team("My Team", myPlayers, myRoundsHistory);
+		
+		// other team
+		Team friendsTeam = new Team("Friends Team", friendsPlayers, friendsRoundsHistory);
+		
+		// teams array
+		ArrayList<Team> teams = new ArrayList<Team>();
+		teams.add(testUserTeam);
+		teams.add(friendsTeam);
+		
+		// admin and weekly league stats for league constructor
+		FantasyLeagueAdministrator admin = new FantasyLeagueAdministrator();
+		
+		ArrayList<LeagueRoundStats> weeklyLeagueStats = new ArrayList<LeagueRoundStats>();
+		
+		// league
+		League globalLeague = new League("Global League", teams, weeklyLeagueStats, admin);
+		
+		League anotherLeague = new League("Another League", teams, weeklyLeagueStats, admin);
+		
+		// arraylist of leagues
+		ArrayList<League> leagues = new ArrayList<League>();
+		leagues.add(globalLeague);
+		leagues.add(anotherLeague);
+		
+		// test user
+		testUser = new User();
+		testUser.setID(1);
+		testUser.setUsername("Test User");
+		testUser.setTeam(testUserTeam);
+		testUser.setLeagues(leagues);
+		
+	
+	}
 }
+

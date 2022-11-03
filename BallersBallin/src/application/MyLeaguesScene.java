@@ -3,11 +3,15 @@ package application;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -15,9 +19,11 @@ import javafx.scene.text.Text;
 public class MyLeaguesScene {
 
 	private Scene myLeaguesScene;
-	private TableView<League> myLeaguesList;
+	private TableView<League> myLeaguesTableView;
+	private Main UI;
 	
-	public MyLeaguesScene() {
+	public MyLeaguesScene(Main UI) {
+		this.UI = UI;
 		setUpMyLeaguesScene();
 	}
 	
@@ -30,29 +36,46 @@ public class MyLeaguesScene {
 		Text title = new Text("My Leagues");
 		
 		// create tableview
-		myLeaguesList = new TableView<League>();
+		myLeaguesTableView = new TableView<League>();
 		
 		
 		// set nodes to root
-		root.getChildren().addAll(navBar, title, myLeaguesList);
+		root.getChildren().addAll(navBar, title, myLeaguesTableView);
 	}
 	
 	
 	public void updateLeaguesList(ArrayList<League> list) {
 		// clear previous list
-		myLeaguesList.getItems().clear();
+		myLeaguesTableView.getItems().clear();
+		
+		ObservableList<League> leagueList = FXCollections.observableArrayList(list);
 		
 		
+		TableColumn<League,String> leagueName = new TableColumn<League,String>("League Name");
+		TableColumn<League,String> view = new TableColumn<League,String>("League Ranking");
 		
-		TableColumn leagueName = new TableColumn("League Name");
-		TableColumn leagueRanking = new TableColumn("League Ranking");
+		myLeaguesTableView.getColumns().addAll(leagueName, view);
 		
-		myLeaguesList.getColumns().addAll(leagueName, leagueRanking);
+		leagueName.setCellValueFactory(new PropertyValueFactory<League,String>("name"));
 		
-		for (League league : list) {
-			myLeaguesList.getItems().add(league)
-		}
+		// set the items of the table view to the observable list
+		myLeaguesTableView.setItems(leagueList);
 		
+		// set on click event for the table view
+		myLeaguesTableView.setOnMouseClicked(event -> {
+
+			//System.out.println(this.myLeaguesTableView.getSelectionModel().getSelectedCells());
+			
+			ObservableList<TablePosition> tablePosition = this.myLeaguesTableView.getSelectionModel().getSelectedCells();
+			
+			//System.out.println(tablePosition.get(0).getRow());
+			
+			League targetLeague = leagueList.get(tablePosition.get(0).getRow());
+			
+			//System.out.println(targetLeague.name);
+			
+			UI.showLeagueScene(targetLeague);
+		});
 	}
 	
 
@@ -67,3 +90,4 @@ public class MyLeaguesScene {
 	
 	
 }
+
