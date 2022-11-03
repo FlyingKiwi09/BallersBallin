@@ -6,6 +6,8 @@ import java.util.List;
 import javafx.scene.Scene;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -13,7 +15,7 @@ import javafx.scene.text.Text;
 public class MyLeaguesScene {
 
 	private Scene myLeaguesScene;
-	private ListView myLeaguesList;
+	private TableView<League> myLeaguesList;
 	
 	public MyLeaguesScene() {
 		setUpMyLeaguesScene();
@@ -27,21 +29,29 @@ public class MyLeaguesScene {
 		HBox navBar = new HBox();
 		Text title = new Text("My Leagues");
 		
-		myLeaguesList = new ListView();
+		// create tableview
+		myLeaguesList = new TableView<League>();
+		
+		
+		// set nodes to root
 		root.getChildren().addAll(navBar, title, myLeaguesList);
 	}
 	
-	public void updateLeaguesList(ArrayList<String> list) {
+	
+	public void updateLeaguesList(ArrayList<League> list) {
 		// clear previous list
 		myLeaguesList.getItems().clear();
 		
 		
 		
-		// add list items passed in
-		for (String s: list) {
-			myLeaguesList.getItems().add(s);
-		}
+		TableColumn leagueName = new TableColumn("League Name");
+		TableColumn leagueRanking = new TableColumn("League Ranking");
 		
+		myLeaguesList.getColumns().addAll(leagueName, leagueRanking);
+		
+		for (League league : list) {
+			myLeaguesList.getItems().add(league)
+		}
 		
 	}
 	
