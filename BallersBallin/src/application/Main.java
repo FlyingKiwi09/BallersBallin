@@ -1,6 +1,8 @@
 package application;
 	
 import java.awt.Label;
+import java.util.ArrayList;
+import java.util.Stack;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -16,7 +18,7 @@ import javafx.scene.text.Text;
 
 public class Main extends Application {
 	
-	private final int WIDTH = 400;
+	private final int WIDTH = 200;
 	private final int HEIGHT = 400;
 	
 	private Stage primaryStage;
@@ -27,6 +29,8 @@ public class Main extends Application {
 	private Scene teamScene;
 	private Scene playerScene;
 	private Scene transferScene;
+	
+	private Stack<Scene> historyForGoingBack = new Stack<Scene>();
 	
 	
 	@Override
@@ -60,7 +64,7 @@ public class Main extends Application {
 
 	private void setUpLoginScene() {
 		VBox root = new VBox();
-		loginScene = new Scene(root,400,400);
+		loginScene = new Scene(root,WIDTH,HEIGHT);
 		loginScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		
 		Text title = new Text("Login");
@@ -129,14 +133,17 @@ public class Main extends Application {
 	// update method to update the myLeaguesScene based on user recieved back from controller
 	// for now myLeaguesScene is shown directly from the loginButton...
 	public void showMyLeaguesScene() {
+
+		// hard coded leagues for UI demo
+		ArrayList<String> leagues = new ArrayList<>();
+		leagues.add("League 1");
+		leagues.add("League 2");
 		
-		//TODO: 
-		
-		String[] leagues = {"league 1", "league 2", "league 3"};
+		// update leagues list
 		myLeaguesScene.updateLeaguesList(leagues);
 		
-		
-		this.primaryStage.setScene(myLeaguesScene);
+		// set myLeaguesScene to primary stage
+		this.primaryStage.setScene(myLeaguesScene.getMyLeaguesScene());
 	}
 	
 }
