@@ -1,5 +1,8 @@
 package application;
 
+import java.io.File;
+import java.util.Scanner;
+
 public class FantasyLeagueController {
 
 	//Class fields
@@ -26,6 +29,63 @@ public class FantasyLeagueController {
 	 */
 	public void scanData() {
 		
+		FantasyLeagueModel fantasyLeagueModel = new FantasyLeagueModel();
+		boolean NewPlayer = true;
+		Player play;
+
+		
+		String filename = "BallersBallin_sampledata_set2.txt";
+		
+		try {
+			
+			Scanner scan = new Scanner(new File(filename));
+			while (scan.hasNext()) {
+				
+				scan.useDelimiter(",");
+			
+				String fullname = scan.next();
+				String team = scan.next();
+				int jersey = scan.nextInt();
+				String position = scan.next();
+				System.out.println(position + "next");
+				String a = scan.nextLine();
+			}
+//				for (int i =0; i<fantasyLeagueModel.getPlayers().size();i++) {
+//					
+//					Player p = fantasyLeagueModel.getPlayers().get(i);
+//					
+//					if (p.getName().equalsIgnoreCase(fullname)) {
+//						
+//						
+//						if (p.getNBLTeamName().equalsIgnoreCase(teamName)) {
+//						
+//						NewPlayer = false;
+//						play = p;
+//						}
+//						
+//					}
+//					
+//				}
+//				
+//				if (NewPlayer == true) {
+//					
+//					for (Position p : Position.values()) {
+//						
+//						if (p.toString().equalsIgnoreCase(position)) {
+//							
+//					Player player = new Player(p, fullname, teamName, jerseyNumber);
+//					PlayerGameStats roundone = new PlayerGameStats (1,1,1,1);
+//					player.getSeasonStats().get(player.getSeasonStats().size()-1).addGameStats(roundone);
+//						}
+//					}
+//				}
+//				
+//			}
+		}
+		
+		catch(Exception e) {
+			
+		}
 	}
 	
 

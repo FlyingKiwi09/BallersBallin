@@ -22,14 +22,13 @@ public class Player {
 	int historicalTimePlayed;
 	int historicalPlayerScore;
 	
-	public Player(Position p, String n, String tn, int jn, double pr) {
+	public Player(Position p, String n, String tn, int jn) {
 		
 		this.seasonStats = new ArrayList<PlayerSeasonStats>();
 		
 		this.name = n;
 		this.NBLTeamName= tn;
 		this.jerseyNumber = jn;
-		this.price = pr;
 		
 		IDCount++;
 		this.Id = IDCount;
