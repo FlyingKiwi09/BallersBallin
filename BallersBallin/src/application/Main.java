@@ -19,7 +19,7 @@ import javafx.scene.text.Text;
 public class Main extends Application {
 	
 	//test
-	
+	//test2
 	private final int WIDTH = 200;
 	private final int HEIGHT = 400;
 	
