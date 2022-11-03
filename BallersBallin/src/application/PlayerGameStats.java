@@ -1,7 +1,6 @@
 package application;
 
 public class PlayerGameStats {
-	
 	private int points;
 	private int assists;
 	private int rebounds;

@@ -9,7 +9,7 @@ public class Player {
 	ArrayList<PlayerSeasonStats> seasonStats;
 	
 	Position position;
-	String name;
+	private String name;
 	String NBLTeamName;
 	int jerseyNumber;
 	int Id;
@@ -139,7 +139,9 @@ public class Player {
 		this.historicalPlayerScore = historicalPlayerScore;
 	}
 	
-	
+	public String toString() {
+		return this.getName() + " " + this.getPosition() + " " + this.getNBLTeamName();
+	}
 	
 	
 }

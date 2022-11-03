@@ -47,9 +47,27 @@ public class FantasyLeagueController {
 				String team = scan.next();
 				int jersey = scan.nextInt();
 				String position = scan.next();
-				System.out.println(position + "next");
-				String a = scan.nextLine();
-			}
+				int points = scan.nextInt();
+				int rebounds = scan.nextInt();
+				int assists = scan.nextInt();
+				int min = scan.nextInt();
+				
+				
+				if (position.equals("CENTRE")) {
+			Player player = new Player(Position.CENTRE, fullname, team, jersey);
+			fantasyLeagueModel.getPlayers().add(player);
+				}
+				else if (position.equals("GUARD")) {
+					Player player = new Player(Position.CENTRE, fullname, team, jersey);
+					fantasyLeagueModel.getPlayers().add(player);
+				}
+				else if (position.equals("FORWARD")) {
+					Player player = new Player(Position.FORWARD, fullname, team, jersey);
+					fantasyLeagueModel.getPlayers().add(player);
+				}
+		
+				
+//				
 //				for (int i =0; i<fantasyLeagueModel.getPlayers().size();i++) {
 //					
 //					Player p = fantasyLeagueModel.getPlayers().get(i);
@@ -57,14 +75,15 @@ public class FantasyLeagueController {
 //					if (p.getName().equalsIgnoreCase(fullname)) {
 //						
 //						
-//						if (p.getNBLTeamName().equalsIgnoreCase(teamName)) {
+//						if (p.getNBLTeamName().equalsIgnoreCase(team)) {
 //						
 //						NewPlayer = false;
 //						play = p;
 //						}
 //						
 //					}
-//					
+//				}
+					
 //				}
 //				
 //				if (NewPlayer == true) {
@@ -73,18 +92,23 @@ public class FantasyLeagueController {
 //						
 //						if (p.toString().equalsIgnoreCase(position)) {
 //							
-//					Player player = new Player(p, fullname, teamName, jerseyNumber);
+//					Player player = new Player(p, fullname, team, jersey);
 //					PlayerGameStats roundone = new PlayerGameStats (1,1,1,1);
 //					player.getSeasonStats().get(player.getSeasonStats().size()-1).addGameStats(roundone);
 //						}
 //					}
 //				}
-//				
-//			}
+				
+			}
 		}
 		
 		catch(Exception e) {
 			
+		}
+		
+		for (Player p : fantasyLeagueModel.getPlayers()) {
+			
+			System.out.print(p.toString());
 		}
 	}
 	

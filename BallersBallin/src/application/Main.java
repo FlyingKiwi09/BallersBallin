@@ -66,6 +66,7 @@ public class Main extends Application {
 		
 		FantasyLeagueController maincontroller = new FantasyLeagueController();
 		maincontroller.scanData();
+		
 		VBox root = new VBox();
 		loginScene = new Scene(root,WIDTH,HEIGHT);
 		loginScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());

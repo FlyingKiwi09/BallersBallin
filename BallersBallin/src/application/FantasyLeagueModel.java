@@ -12,6 +12,9 @@ public class FantasyLeagueModel {
 	
 	//constructor
 	public FantasyLeagueModel() {
+		this.players = new ArrayList<Player>();
+		this.users = new ArrayList<User>();
+		this.leagues = new ArrayList<League>();
 		
 	}
 
@@ -25,7 +28,7 @@ public class FantasyLeagueModel {
 	public ArrayList<League> getLeagues() 				{	return leagues;			}
 	public void setLeagues(ArrayList<League> leagues) 	{	this.leagues = leagues;	}
 	
-	
+
 
 	
 	

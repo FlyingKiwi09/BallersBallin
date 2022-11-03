@@ -1,10 +1,10 @@
-Isaac Morrison,Manawatu Jets,16,FORWARD,7,0,11,4014
-Xavier Cooks,Wellington Saints,10,FORWARD,309,59,170,28345
-Benjamin Carlile-Smith,Taranaki Airs,6,GUARD,0,0,2,418
-Michael Ruske,Otago Nuggets,6,GUARD,0,0,1,112
-Alonzo Mourning III,Nelson Giants,33,CENTRE,353,41,167,33785
-Nathaniel Salmon,Manawatu Jets,13,FORWARD,80,17,34,16228
-Derek Albertsen,Hawkes Bay Hawks,1,GUARD,31,5,5,7720
-Sione Helu,Wellington Saints,8,GUARD,36,15,15,6500
-Talanoa Latu,Franklin Bulls,20,GUARD,0,0,0,21
-Liam McRae,Southland Sharks,0,FORWARD,22,6,38,8731
+Isaac Morrison,Manawatu Jets,16,FORWARD,7,0,11,4014,
+Xavier Cooks,Wellington Saints,10,FORWARD,309,59,170,28345,
+Benjamin Carlile-Smith,Taranaki Airs,6,GUARD,0,0,2,418,
+Michael Ruske,Otago Nuggets,6,GUARD,0,0,1,112,
+Alonzo Mourning III,Nelson Giants,33,CENTRE,353,41,167,33785,
+Nathaniel Salmon,Manawatu Jets,13,FORWARD,80,17,34,16228,
+Derek Albertsen,Hawkes Bay Hawks,1,GUARD,31,5,5,7720,
+Sione Helu,Wellington Saints,8,GUARD,36,15,15,6500,
+Talanoa Latu,Franklin Bulls,20,GUARD,0,0,0,21,
+Liam McRae,Southland Sharks,0,FORWARD,22,6,38,8731,
