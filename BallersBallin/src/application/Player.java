@@ -16,20 +16,25 @@ public class Player {
 	double price;
 	
 	
+	final double leagueAvgMins = 17.4;
+	final double leagueAvgPoints = 7.3;
+	final double leagueAvgAssists = 1.5;
+	final double leagueAvgRebounds = 3.5;
+	
 	int historicalPoints;
 	int historicalAssists;
 	int historicalRebounds;
 	int historicalTimePlayed;
 	int historicalPlayerScore;
 	
-	public Player(Position p, String n, String tn, int jn, double pr) {
+	public Player(Position p, String n, String tn, int jn) {
 		
 		this.seasonStats = new ArrayList<PlayerSeasonStats>();
 		
 		this.name = n;
 		this.NBLTeamName= tn;
 		this.jerseyNumber = jn;
-		this.price = pr;
+		this.price = 5;
 		
 		IDCount++;
 		this.Id = IDCount;
@@ -40,6 +45,23 @@ public class Player {
 		this.historicalTimePlayed = 0;
 		
 		this.historicalPlayerScore = 0;
+		
+		this.updatePrice();
+		
+	}
+	
+	//price is done w averages
+	public void updatePrice() {
+		
+		 PlayerSeasonStats currentSeason = seasonStats.get(seasonStats.size()-1);
+		 double tempPrice = currentSeason.getPointsAverage()-this.leagueAvgPoints
+				 			+ currentSeason.getAssistsAverage()-this.leagueAvgAssists
+				 			+ currentSeason.getReboundsAverage()-this.leagueAvgRebounds
+				 			//convert minutes to seconds
+				 			+ currentSeason.getTimePlayedAverage()-(this.leagueAvgMins*60);
+				 			
+		 
+		 this.price += tempPrice;
 		
 	}
 	
