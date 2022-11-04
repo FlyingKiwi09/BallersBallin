@@ -3,7 +3,6 @@ package application;
 import java.awt.Label;
 import java.util.ArrayList;
 import java.util.Stack;
-
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -21,11 +20,13 @@ public class Main extends Application {
 	//test user for testing the UI until it gets connected to the controller
 	private User testUser;
 	
+	// controller
+	private FantasyLeagueController controller;
+	
 	private final int WIDTH = 390;
 	private final int HEIGHT = 550;
 	
 	private Stage primaryStage;
-	
 	private Scene loginScene;
 	private MyLeaguesScene myLeaguesScene;
 	private LeagueScene leagueScene;
@@ -45,16 +46,20 @@ public class Main extends Application {
 			//set up the test user
 			setUpTestUser();
 			
+			// set up Controller
+			controller = new FantasyLeagueController();
+			
 			// set up all the scenes
 			setUpLoginScene();
-			myLeaguesScene = new MyLeaguesScene(this);
-			leagueScene = new LeagueScene(this);
+			myLeaguesScene = new MyLeaguesScene(this, WIDTH, HEIGHT);
+			leagueScene = new LeagueScene(this, WIDTH, HEIGHT);
 			setUpTeamScene();
 			setUpPlayerScene();
 			setUpTransferScene();
 			
 			// start by showing the login scene
 			primaryStage.setScene(loginScene);
+			
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -99,9 +104,12 @@ public class Main extends Application {
 			// TODO: send name and password to controller for validation
 			// controller will then reply with method call to show error message or homepage 
 			// for now homepage method call is here....
+			String name = nameTF.getText();
+			String password = passwordTF.getText();
 			
-			
-			showMyLeaguesScene(testUser.getLeagues());
+			// push login scene before changing scenes
+			this.historyForGoingBack.push(loginScene);
+			showMyLeaguesScene(testUser);
 		});
 		
 		// add to root
@@ -113,6 +121,14 @@ public class Main extends Application {
 	
 	
 	
+	public Stack<Scene> getHistoryForGoingBack() {
+		return historyForGoingBack;
+	}
+
+	public void setHistoryForGoingBack(Stack<Scene> historyForGoingBack) {
+		this.historyForGoingBack = historyForGoingBack;
+	}
+
 	private void setUpLeagueScene() {
 		
 	}
@@ -139,10 +155,10 @@ public class Main extends Application {
 	// TODO: update method to accept a User from the controller
 	// update method to update the myLeaguesScene based on user recieved back from controller
 	// for now myLeaguesScene is shown directly from the loginButton...
-	public void showMyLeaguesScene(ArrayList<League> leagues) {
+	public void showMyLeaguesScene(User user) {
 
 		// update leagues list
-		myLeaguesScene.updateLeaguesList(leagues);
+		myLeaguesScene.updateLeaguesList(user.getLeagues());
 		
 		// set myLeaguesScene to primary stage
 		this.primaryStage.setScene(myLeaguesScene.getMyLeaguesScene());
@@ -153,11 +169,16 @@ public class Main extends Application {
 		leagueScene.updateTeamsList(targetLeague);
 		
 		
+		
 		// set leagueScene to primary stage
 		this.primaryStage.setScene(leagueScene.getLeagueScene());
+	
 		
 	}
 	
+	public void goBack() {
+		this.primaryStage.setScene(this.historyForGoingBack.pop());
+	}
 	
 	private void setUpTestUser() {
 		

@@ -3,10 +3,13 @@ package application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -18,17 +21,30 @@ public class LeagueScene {
 	private TableView<Team> leagueTeamsTableView;
 	private Text title;
 
-	public LeagueScene(Main UI) {
+	public LeagueScene(Main UI,int width, int height) {
 		this.UI = UI;
-		setUpLeagueScene();
+		setUpLeagueScene(width, height);
 	}
 	
-	private void setUpLeagueScene() {
+	private void setUpLeagueScene(int width, int height) {
 		VBox root = new VBox();
-		leagueScene = new Scene(root,200,400);
+		leagueScene = new Scene(root,width, height);
 		leagueScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		
 		HBox navBar = new HBox();
+		// set up back button
+		Image backImage = new Image("backImage.png", 20, 20, false, false, false);
+		ImageView backImageView = new ImageView(backImage);
+		Button backButton = new Button();
+		backButton.setGraphic(backImageView);
+		
+		backButton.setOnMouseClicked(event -> {
+
+			UI.goBack();
+		});
+		
+		navBar.getChildren().add(backButton);
+		
 		title = new Text("");
 		
 		// create tableview
@@ -51,16 +67,21 @@ public class LeagueScene {
 		ObservableList<Team> teamList = FXCollections.observableArrayList(targetLeague.getTeams());
 		
 		// set columns
-		TableColumn<Team,String> positions = new TableColumn<Team,String>("Pos");
+//		TableColumn<Team,String> position = new TableColumn<Team,String>("Pos"); couldn't set the Cell Value Factory for this 
 		TableColumn<Team,String> teamName = new TableColumn<Team,String>("Team");
-		TableColumn<Team,String> roundPoints = new TableColumn<Team,String>("Round Points");
-		TableColumn<Team,String> totalPoints = new TableColumn<Team,String>("Total");
+		TableColumn<Team,Integer> roundPoints = new TableColumn<Team,Integer>("Round Points");
+		TableColumn<Team,Integer> totalScore = new TableColumn<Team,Integer>("Total");
 		
-		leagueTeamsTableView.getColumns().addAll(positions, teamName, roundPoints, totalPoints);
+		leagueTeamsTableView.getColumns().addAll(teamName, roundPoints, totalScore);
 		
 		// set value factories
-		// TODO: set value facoties for the other columns???
 		teamName.setCellValueFactory(new PropertyValueFactory<Team,String>("name"));
+		totalScore.setCellValueFactory(new PropertyValueFactory<Team,Integer>("totalscore"));
+		roundPoints.setCellValueFactory(new PropertyValueFactory<Team,Integer>("roundScore"));
+		
+		
+		// sort table by position column
+		leagueTeamsTableView.getSortOrder().add(totalScore);
 		
 		// set the items of the table view to the observable list
 		leagueTeamsTableView.setItems(teamList);
