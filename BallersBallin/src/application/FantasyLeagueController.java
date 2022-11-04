@@ -65,40 +65,10 @@ public class FantasyLeagueController {
 					fantasyLeagueModel.getPlayers().add(player);
 				}
 		
-				
-//				
-//				for (int i =0; i<fantasyLeagueModel.getPlayers().size();i++) {
-//					
-//					Player p = fantasyLeagueModel.getPlayers().get(i);
-//					
-//					if (p.getName().equalsIgnoreCase(fullname)) {
-//						
-//						
-//						if (p.getNBLTeamName().equalsIgnoreCase(team)) {
-//						
-//						NewPlayer = false;
-//						play = p;
-//						}
-//						
-//					}
-//				}
+	
 					
-//				}
-//				
-//				if (NewPlayer == true) {
-//					
-//					for (Position p : Position.values()) {
-//						
-//						if (p.toString().equalsIgnoreCase(position)) {
-//							
-//					Player player = new Player(p, fullname, team, jersey);
-//					PlayerGameStats roundone = new PlayerGameStats (1,1,1,1);
-//					player.getSeasonStats().get(player.getSeasonStats().size()-1).addGameStats(roundone);
-//						}
-//					}
-//				}
-				
-			}
+				}
+
 		}
 		
 		catch(Exception e) {
