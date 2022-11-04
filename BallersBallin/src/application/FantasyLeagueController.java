@@ -34,7 +34,9 @@ public class FantasyLeagueController {
 		Player play;
 
 		
+		
 		String filename = "BallersBallin_sampledata_set2.txt";
+		
 		
 		try {
 			
@@ -55,18 +57,28 @@ public class FantasyLeagueController {
 				if (position.equals("CENTRE")) {
 			Player player = new Player(Position.CENTRE, fullname, team, jersey);
 			fantasyLeagueModel.getPlayers().add(player);
+			PlayerGameStats round = new PlayerGameStats(player, points, assists, rebounds, min, 1);
+			fantasyLeagueModel.getGamestats().add(round);
+			PlayerSeasonStats season = new PlayerSeasonStats(player);
+			season.addGameStats(round);
+			
 				}
 				else if (position.equals("GUARD")) {
 					Player player = new Player(Position.CENTRE, fullname, team, jersey);
 					fantasyLeagueModel.getPlayers().add(player);
+					PlayerGameStats round = new PlayerGameStats(player, points, assists, rebounds, min, 1);
+					fantasyLeagueModel.getGamestats().add(round);
+					PlayerSeasonStats season = new PlayerSeasonStats(player);
+					season.addGameStats(round);
 				}
 				else if (position.equals("FORWARD")) {
 					Player player = new Player(Position.FORWARD, fullname, team, jersey);
 					fantasyLeagueModel.getPlayers().add(player);
+					PlayerGameStats round = new PlayerGameStats(player, points, assists, rebounds, min, 1);
+					fantasyLeagueModel.getGamestats().add(round);
+					PlayerSeasonStats season = new PlayerSeasonStats(player);
+					season.addGameStats(round);
 				}
-		
-	
-					
 				}
 
 		}
@@ -75,9 +87,11 @@ public class FantasyLeagueController {
 			
 		}
 		
-		for (Player p : fantasyLeagueModel.getPlayers()) {
+		for (PlayerGameStats p : fantasyLeagueModel.getGamestats()) {
 			
-			System.out.print(p.toString());
+			if (p.player.getName().equals("Isaac Morrison")) {
+				System.out.print(
+			}
 		}
 	}
 	
