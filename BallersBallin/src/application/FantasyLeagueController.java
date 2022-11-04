@@ -52,7 +52,6 @@ public class FantasyLeagueController {
 				int assists = scan.nextInt();
 				int min = scan.nextInt();
 				
-				
 				if (position.equals("CENTRE")) {
 			Player player = new Player(Position.CENTRE, fullname, team, jersey);
 			fantasyLeagueModel.getPlayers().add(player);

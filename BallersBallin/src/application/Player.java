@@ -29,6 +29,7 @@ public class Player {
 		this.name = n;
 		this.NBLTeamName= tn;
 		this.jerseyNumber = jn;
+		this.position = p;
 		
 		IDCount++;
 		this.Id = IDCount;
@@ -140,7 +141,7 @@ public class Player {
 	}
 	
 	public String toString() {
-		return this.getName() + " " + this.getPosition() + " " + this.getNBLTeamName();
+		return this.getName() + " " + this.getPosition().name() + " " + this.getNBLTeamName();
 	}
 	
 	
