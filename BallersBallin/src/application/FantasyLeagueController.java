@@ -4,13 +4,14 @@ import java.io.File;
 import java.util.Scanner;
 
 public class FantasyLeagueController {
-
+	
+	FantasyLeagueModel fantasyLeagueModel;
 	//Class fields
 	//None as of 02.11.22	
 	
 	//Constructor
-	public FantasyLeagueController(){
-		
+	public FantasyLeagueController(FantasyLeagueModel fantasyLeagueModel){
+		this.fantasyLeagueModel = fantasyLeagueModel;
 	}
 	
 	//Getter, setter methods
@@ -29,7 +30,6 @@ public class FantasyLeagueController {
 	 */
 	public void scanData() {
 		
-		FantasyLeagueModel fantasyLeagueModel = new FantasyLeagueModel();
 		boolean NewPlayer = true;
 		Player play;
 
@@ -90,6 +90,7 @@ public class FantasyLeagueController {
 		for (PlayerGameStats p : fantasyLeagueModel.getGamestats()) {
 			
 			if (p.player.getName().equals("Isaac Morrison")) {
+				//System.out.print(p.getPoints());
 			}
 		}
 	}

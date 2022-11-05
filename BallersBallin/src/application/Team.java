@@ -30,7 +30,7 @@ public class Team {
 	}
 	
 	public void addPlayer(Player p) {
-		players.add(p);
+		this.players.add(p);
 	}
 
 	ArrayList<TeamRoundStats> getTeamRoundHistory() {

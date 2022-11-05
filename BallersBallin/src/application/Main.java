@@ -31,13 +31,13 @@ public class Main extends Application {
 	private Scene transferScene;
 	
 	private Stack<Scene> historyForGoingBack = new Stack<Scene>();
-	
+
 	
 	@Override
 	public void start(Stage primaryStage) {
 		// store the primaryStage to the UI so the scene can be changed on different button clicks
 		this.primaryStage = primaryStage;
-		
+
 		try {
 			// set up all the scenes
 			setUpLoginScene();
@@ -63,9 +63,27 @@ public class Main extends Application {
 	/*PRIVATE METHODS SET UP THE DIFFERENT SCENES OF THE UI*/
 
 	private void setUpLoginScene() {
-		
-		FantasyLeagueController maincontroller = new FantasyLeagueController();
+		//creating a model and a controller.
+		FantasyLeagueModel fantasyLeagueModel = new FantasyLeagueModel();
+		FantasyLeagueController maincontroller = new FantasyLeagueController(fantasyLeagueModel);
+		//scans the hardcoded players in with their current weekly points.
 		maincontroller.scanData();
+		
+		//populating hardcoded teams from the list of players in the fantasty league model.
+		Team a = new Team("Team A");
+		
+		for (Player p : fantasyLeagueModel.getPlayers()) {
+			
+			a.addPlayer(p);
+		}
+		
+		Team b = new Team("Team B");
+		
+		b.addPlayer(fantasyLeagueModel.getPlayers().get(0));
+		b.addPlayer(fantasyLeagueModel.getPlayers().get(1));
+		b.addPlayer(fantasyLeagueModel.getPlayers().get(2));
+		
+		
 		
 		
 		VBox root = new VBox();
