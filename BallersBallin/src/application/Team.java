@@ -14,14 +14,11 @@ public class Team {
 	
 	
 	
-	public Team(String name, ArrayList<Player> players, ArrayList<TeamRoundStats> teamRoundHistory) {
+	public Team(String name) {
 		this.setName(name);
 		this.budget = 50;
 		this.spending = 0;
 		this.totalscore = 0;
-		this.players = players;
-		this.teamRoundHistory = teamRoundHistory;
-		
 	}
 	
 	public void calculateWeeklyScore() {
@@ -32,8 +29,8 @@ public class Team {
 		
 	}
 	
-	public void addPlayer(Position p) {
-		
+	public void addPlayer(Player p) {
+		players.add(p);
 	}
 
 	ArrayList<TeamRoundStats> getTeamRoundHistory() {

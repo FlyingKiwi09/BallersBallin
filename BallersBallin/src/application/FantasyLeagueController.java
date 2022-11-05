@@ -90,7 +90,6 @@ public class FantasyLeagueController {
 		for (PlayerGameStats p : fantasyLeagueModel.getGamestats()) {
 			
 			if (p.player.getName().equals("Isaac Morrison")) {
-				System.out.print(
 			}
 		}
 	}
