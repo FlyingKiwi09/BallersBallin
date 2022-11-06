@@ -13,7 +13,7 @@ import javafx.scene.text.Text;
 public class MyLeaguesScene {
 
 	private Scene myLeaguesScene;
-	private ListView myLeaguesList;
+	private ListView<String> myLeaguesList;
 	
 	public MyLeaguesScene() {
 		setUpMyLeaguesScene();
@@ -27,19 +27,19 @@ public class MyLeaguesScene {
 		HBox navBar = new HBox();
 		Text title = new Text("My Leagues");
 		
-		myLeaguesList = new ListView();
+		myLeaguesList = new ListView<String>();
 		root.getChildren().addAll(navBar, title, myLeaguesList);
 	}
 	
-	public void updateLeaguesList(ArrayList<String> list) {
+	public void updateLeaguesList(ArrayList<League> list) {
 		// clear previous list
 		myLeaguesList.getItems().clear();
 		
 		
 		
 		// add list items passed in
-		for (String s: list) {
-			myLeaguesList.getItems().add(s);
+		for (League s: list) {
+			myLeaguesList.getItems().add(s.getLeagueName());
 		}
 		
 		

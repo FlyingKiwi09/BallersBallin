@@ -17,6 +17,8 @@ import javafx.scene.text.Text;
 
 
 public class Main extends Application {
+	FantasyLeagueModel fantasyLeagueModel = new FantasyLeagueModel();
+	FantasyLeagueController maincontroller = new FantasyLeagueController(fantasyLeagueModel);
 	
 	private final int WIDTH = 200;
 	private final int HEIGHT = 400;
@@ -64,26 +66,37 @@ public class Main extends Application {
 
 	private void setUpLoginScene() {
 		//creating a model and a controller.
-		FantasyLeagueModel fantasyLeagueModel = new FantasyLeagueModel();
-		FantasyLeagueController maincontroller = new FantasyLeagueController(fantasyLeagueModel);
+
 		//scans the hardcoded players in with their current weekly points.
 		maincontroller.scanData();
 		
 		//populating hardcoded teams from the list of players in the fantasty league model.
 		Team a = new Team("Team A");
-		
 		for (Player p : fantasyLeagueModel.getPlayers()) {
 			
 			a.addPlayer(p);
 		}
 		
-		Team b = new Team("Team B");
 		
+		Team b = new Team("Team B");
 		b.addPlayer(fantasyLeagueModel.getPlayers().get(0));
 		b.addPlayer(fantasyLeagueModel.getPlayers().get(1));
 		b.addPlayer(fantasyLeagueModel.getPlayers().get(2));
 		
+		//creating hardcoded users 
+		User userOne = new User();
+		FantasyLeagueAdministrator userTwo = new FantasyLeagueAdministrator();
 		
+		
+		//creating two leagues, adding teams to the league and adding to the model.
+		League leagueOne = new League(userTwo, "LeagueOne");
+		League leagueTwo = new League(userTwo, "LeagueTwo");
+		
+		leagueOne.addTeams(a);
+		leagueOne.addTeams(b);
+		leagueTwo.addTeams(a);
+		fantasyLeagueModel.getLeagues().add(leagueOne);
+		fantasyLeagueModel.getLeagues().add(leagueTwo);
 		
 		
 		VBox root = new VBox();
@@ -158,12 +171,9 @@ public class Main extends Application {
 	public void showMyLeaguesScene() {
 
 		// hard coded leagues for UI demo
-		ArrayList<String> leagues = new ArrayList<>();
-		leagues.add("League 1");
-		leagues.add("League 2");
-		
+
 		// update leagues list
-		myLeaguesScene.updateLeaguesList(leagues);
+		myLeaguesScene.updateLeaguesList(fantasyLeagueModel.getLeagues());
 		
 		// set myLeaguesScene to primary stage
 		this.primaryStage.setScene(myLeaguesScene.getMyLeaguesScene());

@@ -3,7 +3,7 @@ package application;
 import java.util.ArrayList;
 
 public class League {
-	String leagueName;
+	private String leagueName;
 	private ArrayList<Team> teams = new ArrayList<Team>();
 	ArrayList<LeagueRoundStats> weeklyLeagueStats = new ArrayList<LeagueRoundStats>();
 	FantasyLeagueAdministrator Administrator;
@@ -11,7 +11,7 @@ public class League {
 	
 	
 	public League(FantasyLeagueAdministrator Administrator, String leagueName ) {
-		this.leagueName = leagueName;
+		this.setLeagueName(leagueName);
 		this.Administrator = Administrator;
 	}
 
@@ -22,5 +22,19 @@ public class League {
 	void setTeams(ArrayList<Team> teams) {
 		this.teams = teams;
 	}
+	
+	
+	public void addTeams(Team team) {
+		this.teams.add(team);
+	}
+
+	String getLeagueName() {
+		return leagueName;
+	}
+
+	void setLeagueName(String leagueName) {
+		this.leagueName = leagueName;
+	}
+	
 	
 }
