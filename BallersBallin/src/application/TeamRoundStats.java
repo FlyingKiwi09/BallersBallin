@@ -4,14 +4,13 @@ import java.util.ArrayList;
 
 public class TeamRoundStats {
 	ArrayList<PlayerGameStats> playersStats = new ArrayList<PlayerGameStats>();
-	//can't create getter and setter or contructor due to player game stats class not existing
 	private int teamWeeklyScore;
+	private Team team;
 	
-	
-	public TeamRoundStats(ArrayList<PlayerGameStats> playersStats) {
+	public TeamRoundStats(Team team) {
 		
 		this.setTeamWeeklyScore(0);
-		this.playersStats =playersStats;
+		this.setTeam(team);
 	}
 
 
@@ -22,6 +21,20 @@ public class TeamRoundStats {
 
 	void setTeamWeeklyScore(int teamWeeklyScore) {
 		this.teamWeeklyScore = teamWeeklyScore;
+	}
+
+
+	public Team getTeam() {
+		return team;
+	}
+
+
+	public void setTeam(Team team) {
+		this.team = team;
+	}
+	
+	public void generateTeamScore() {
+		
 	}
 }
 
