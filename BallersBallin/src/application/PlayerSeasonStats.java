@@ -11,6 +11,8 @@ public class PlayerSeasonStats {
 	private int totalRebounds;
 	private int totalTimePlayed;
 	private int playerSeasonScore;
+	private double pointsAverage, assistsAverage, reboundsAverage, timePlayedAverage, playerScoreAverage;
+	
 	
 	public PlayerSeasonStats(Player player) {
 		

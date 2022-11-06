@@ -16,24 +16,23 @@ import javafx.scene.text.Text;
 
 //test branch
 public class Main extends Application {
-	FantasyLeagueModel fantasyLeagueModel = new FantasyLeagueModel();
-	FantasyLeagueController maincontroller = new FantasyLeagueController(fantasyLeagueModel);
+//	FantasyLeagueModel fantasyLeagueModel = new FantasyLeagueModel();
+	FantasyLeagueController maincontroller = new FantasyLeagueController();
 	
-<<<<<<< BallersBallin/src/application/Main.java
+
 	//test user for testing the UI until it gets connected to the controller
 	private User testUser;
-=======
+
 	//test
 	//test2
 	private final int WIDTH = 200;
 	private final int HEIGHT = 400;
->>>>>>> BallersBallin/src/application/Main.java
+
 	
-	// controller
-	private FantasyLeagueController controller;
+//	// controller
+//	private FantasyLeagueController controller;
 	
-	private final int WIDTH = 390;
-	private final int HEIGHT = 550;
+
 	
 	private Stage primaryStage;
 	private Scene loginScene;
@@ -54,9 +53,6 @@ public class Main extends Application {
 		try {
 			//set up the test user
 			setUpTestUser();
-			
-			// set up Controller
-			controller = new FantasyLeagueController();
 			
 			// set up all the scenes
 			setUpLoginScene();
@@ -89,32 +85,32 @@ public class Main extends Application {
 		maincontroller.scanData();
 		
 		//populating hardcoded teams from the list of players in the fantasty league model.
-		Team a = new Team("Team A");
-		for (Player p : fantasyLeagueModel.getPlayers()) {
-			
-			a.addPlayer(p);
-		}
-		
-		
-		Team b = new Team("Team B");
-		b.addPlayer(fantasyLeagueModel.getPlayers().get(0));
-		b.addPlayer(fantasyLeagueModel.getPlayers().get(1));
-		b.addPlayer(fantasyLeagueModel.getPlayers().get(2));
-		
+//		Team a = new Team("Team A");
+//		for (Player p : maincontroller.getPlayers()) {
+//			
+//			a.addPlayer(p);
+//		}
+//		
+//		
+//		Team b = new Team("Team B");
+//		b.addPlayer(maincontroller.getPlayers().get(0));
+//		b.addPlayer(maincontroller.getPlayers().get(1));
+//		b.addPlayer(maincontroller.getPlayers().get(2));
+//		
 		//creating hardcoded users 
 		User userOne = new User();
 		FantasyLeagueAdministrator userTwo = new FantasyLeagueAdministrator();
-		
-		
-		//creating two leagues, adding teams to the league and adding to the model.
-		League leagueOne = new League(userTwo, "LeagueOne");
-		League leagueTwo = new League(userTwo, "LeagueTwo");
-		
-		leagueOne.addTeams(a);
-		leagueOne.addTeams(b);
-		leagueTwo.addTeams(a);
-		fantasyLeagueModel.getLeagues().add(leagueOne);
-		fantasyLeagueModel.getLeagues().add(leagueTwo);
+//		
+//		
+//		//creating two leagues, adding teams to the league and adding to the model.
+//		League leagueOne = new League(userTwo, "LeagueOne");
+//		League leagueTwo = new League(userTwo, "LeagueTwo");
+//		
+//		leagueOne.addTeams(a);
+//		leagueOne.addTeams(b);
+//		leagueTwo.addTeams(a);
+//		maincontroller.getLeagues().add(leagueOne);
+//		maincontroller.getLeagues().add(leagueTwo);
 		
 		
 		VBox root = new VBox();
@@ -200,15 +196,15 @@ public class Main extends Application {
 	// for now myLeaguesScene is shown directly from the loginButton...
 	public void showMyLeaguesScene(User user) {
 
-<<<<<<< BallersBallin/src/application/Main.java
+
 		// update leagues list
 		myLeaguesScene.updateLeaguesList(user.getLeagues());
-=======
+
 		// hard coded leagues for UI demo
 
 		// update leagues list
-		myLeaguesScene.updateLeaguesList(fantasyLeagueModel.getLeagues());
->>>>>>> BallersBallin/src/application/Main.java
+		myLeaguesScene.updateLeaguesList(maincontroller.getLeagues());
+
 		
 		// set myLeaguesScene to primary stage
 		this.primaryStage.setScene(myLeaguesScene.getMyLeaguesScene());
@@ -233,61 +229,61 @@ public class Main extends Application {
 	private void setUpTestUser() {
 		
 		
-		//players
-		ArrayList<Player> myPlayers = new ArrayList<Player>();
-		myPlayers.add(new Player(Position.CENTER, "JP", "Wellington", 1, 100000));
-		myPlayers.add(new Player(Position.POINT_GUARD, "Jessie", "Wellington", 3, 200000));
-		myPlayers.add(new Player(Position.POWER_FORWARD, "Tom", "Wellington", 5, 150000));
-		myPlayers.add(new Player(Position.SMALL_FORWARD, "Harry", "Wellington", 7, 170000));
-		myPlayers.add(new Player(Position.CENTER, "Keifer", "Wellington", 9, 220000));
-		myPlayers.add(new Player(Position.SHOOTING_GUARD, "Alina", "Wellington", 11, 90000));
-		
-		
-		ArrayList<Player> friendsPlayers = new ArrayList<Player>();
-		friendsPlayers.add(new Player(Position.CENTER, "Josh", "Auckland", 2, 600000));
-		friendsPlayers.add(new Player(Position.SHOOTING_GUARD, "Deb", "Christchurch", 4, 700000));
-		friendsPlayers.add(new Player(Position.SHOOTING_GUARD, "Jude", "Wellington", 6, 300000));
-		friendsPlayers.add(new Player(Position.POINT_GUARD, "Sarah", "Wellington", 8,320000));
-		friendsPlayers.add(new Player(Position.SMALL_FORWARD, "Ali", "Wellington", 10, 1000000));
-		friendsPlayers.add(new Player(Position.POWER_FORWARD, "Miro", "Wellington", 12, 230000));
-		
-		//round histories
-		ArrayList<TeamRoundStats> myRoundsHistory = new ArrayList<TeamRoundStats>();
-		
-		ArrayList<TeamRoundStats> friendsRoundsHistory = new ArrayList<TeamRoundStats>();
-		
-		//test user team
-		Team testUserTeam = new Team("My Team", myPlayers, myRoundsHistory);
-		
-		// other team
-		Team friendsTeam = new Team("Friends Team", friendsPlayers, friendsRoundsHistory);
-		
-		// teams array
-		ArrayList<Team> teams = new ArrayList<Team>();
-		teams.add(testUserTeam);
-		teams.add(friendsTeam);
-		
-		// admin and weekly league stats for league constructor
-		FantasyLeagueAdministrator admin = new FantasyLeagueAdministrator();
-		
-		ArrayList<LeagueRoundStats> weeklyLeagueStats = new ArrayList<LeagueRoundStats>();
-		
-		// league
-		League globalLeague = new League("Global League", teams, weeklyLeagueStats, admin);
-		
-		League anotherLeague = new League("Another League", teams, weeklyLeagueStats, admin);
-		
-		// arraylist of leagues
-		ArrayList<League> leagues = new ArrayList<League>();
-		leagues.add(globalLeague);
-		leagues.add(anotherLeague);
-		
-		// test user
-		testUser = new User();
-		testUser.setID(1);
-		testUser.setUsername("Test User");
-		testUser.setTeam(testUserTeam);
-		testUser.setLeagues(leagues);
+//		//players
+//		ArrayList<Player> myPlayers = new ArrayList<Player>();
+//		myPlayers.add(new Player(Position.CENTER, "JP", "Wellington", 1, 100000));
+//		myPlayers.add(new Player(Position.POINT_GUARD, "Jessie", "Wellington", 3, 200000));
+//		myPlayers.add(new Player(Position.POWER_FORWARD, "Tom", "Wellington", 5, 150000));
+//		myPlayers.add(new Player(Position.SMALL_FORWARD, "Harry", "Wellington", 7, 170000));
+//		myPlayers.add(new Player(Position.CENTER, "Keifer", "Wellington", 9, 220000));
+//		myPlayers.add(new Player(Position.SHOOTING_GUARD, "Alina", "Wellington", 11, 90000));
+//		
+//		
+//		ArrayList<Player> friendsPlayers = new ArrayList<Player>();
+//		friendsPlayers.add(new Player(Position.CENTER, "Josh", "Auckland", 2, 600000));
+//		friendsPlayers.add(new Player(Position.SHOOTING_GUARD, "Deb", "Christchurch", 4, 700000));
+//		friendsPlayers.add(new Player(Position.SHOOTING_GUARD, "Jude", "Wellington", 6, 300000));
+//		friendsPlayers.add(new Player(Position.POINT_GUARD, "Sarah", "Wellington", 8,320000));
+//		friendsPlayers.add(new Player(Position.SMALL_FORWARD, "Ali", "Wellington", 10, 1000000));
+//		friendsPlayers.add(new Player(Position.POWER_FORWARD, "Miro", "Wellington", 12, 230000));
+//		
+//		//round histories
+//		ArrayList<TeamRoundStats> myRoundsHistory = new ArrayList<TeamRoundStats>();
+//		
+//		ArrayList<TeamRoundStats> friendsRoundsHistory = new ArrayList<TeamRoundStats>();
+//		
+//		//test user team
+//		Team testUserTeam = new Team("My Team", myPlayers, myRoundsHistory);
+//		
+//		// other team
+//		Team friendsTeam = new Team("Friends Team", friendsPlayers, friendsRoundsHistory);
+//		
+//		// teams array
+//		ArrayList<Team> teams = new ArrayList<Team>();
+//		teams.add(testUserTeam);
+//		teams.add(friendsTeam);
+//		
+//		// admin and weekly league stats for league constructor
+//		FantasyLeagueAdministrator admin = new FantasyLeagueAdministrator();
+//		
+//		ArrayList<LeagueRoundStats> weeklyLeagueStats = new ArrayList<LeagueRoundStats>();
+//		
+//		// league
+//		League globalLeague = new League("Global League", teams, weeklyLeagueStats, admin);
+//		
+//		League anotherLeague = new League("Another League", teams, weeklyLeagueStats, admin);
+//		
+//		// arraylist of leagues
+//		ArrayList<League> leagues = new ArrayList<League>();
+//		leagues.add(globalLeague);
+//		leagues.add(anotherLeague);
+//		
+//		// test user
+//		testUser = new User();
+//		testUser.setID(1);
+//		testUser.setUsername("Test User");
+//		testUser.setTeam(testUserTeam);
+//		testUser.setLeagues(leagues);
 		
 	
 	}

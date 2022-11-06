@@ -1,6 +1,7 @@
 package application;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FantasyLeagueController {
@@ -10,8 +11,8 @@ public class FantasyLeagueController {
 	//None as of 02.11.22	
 	
 	//Constructor
-	public FantasyLeagueController(FantasyLeagueModel fantasyLeagueModel){
-		this.fantasyLeagueModel = fantasyLeagueModel;
+	public FantasyLeagueController(){
+		this.fantasyLeagueModel = new FantasyLeagueModel();
 	}
 	
 	//Getter, setter methods
@@ -142,6 +143,12 @@ public class FantasyLeagueController {
 		
 	}
 	
+	public ArrayList<Player> getPlayers(){
+		return fantasyLeagueModel.getPlayers();
+	}
 	
+	public ArrayList<League> getLeagues(){
+		return fantasyLeagueModel.getLeagues();
+	}
 	
 }
