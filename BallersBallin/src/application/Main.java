@@ -38,7 +38,7 @@ public class Main extends Application {
 	private Scene loginScene;
 	private MyLeaguesScene myLeaguesScene;
 	private LeagueScene leagueScene;
-	private Scene teamScene;
+	private teamScene teamScene;
 	private Scene playerScene;
 	private Scene transferScene;
 	
@@ -58,8 +58,9 @@ public class Main extends Application {
 			setUpLoginScene();
 			myLeaguesScene = new MyLeaguesScene(this, WIDTH, HEIGHT);
 			leagueScene = new LeagueScene(this, WIDTH, HEIGHT);
-			setUpTeamScene();
-			setUpPlayerScene();
+			teamScene = new teamScene(this, WIDTH, HEIGHT);
+			
+			setUpPlayerScene();  
 			setUpTransferScene();
 			
 			// start by showing the login scene

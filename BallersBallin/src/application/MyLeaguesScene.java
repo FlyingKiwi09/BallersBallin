@@ -91,6 +91,8 @@ public class MyLeaguesScene {
 			//System.out.println(targetLeague.name);
 			UI.getHistoryForGoingBack().push(this.myLeaguesScene);
 			UI.showLeagueScene(targetLeague);
+		
+		
 		});
 	}
 	
