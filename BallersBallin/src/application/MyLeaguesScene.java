@@ -82,6 +82,53 @@ public class MyLeaguesScene {
 					}
 				}
 			}
+				
+				String player = myLeaguesList.getSelectionModel().getSelectedItem();
+				
+				
+				for (League l : list) {
+					
+					for (Team team : l.getTeams()) {
+						
+					
+								for (Player s : team.getPlayers()) {
+					
+					if (player.equals(s.getName())) {
+						myLeaguesList.getItems().clear();
+						
+						
+						for (PlayerSeasonStats t : s.getSeasonStats()) {
+							myLeaguesList.getItems().add(player);
+						}
+										}
+									}
+						}
+					}
+			/*
+			 * String transfer = myLeaguesList.getSelectionModel().getSelectedItem();
+			 * 
+			 * s
+			 * for (League l : list) {
+			 * 
+			 * for (Team team : l.getTeams()) {
+			 * 
+			 * 
+			 * for (Player s : team.getPlayers()) {
+			 * 
+			 * if (player.equals(s.getName())) { myLeaguesList.getItems().clear();
+			 * 
+			 * 
+			 * for (PlayerSeasonStats t : s.getSeasonStats()) {
+			 * 
+			 * if (s.getName()) myLeaguesList.getItems().add(player);
+			 * 
+			 * 
+			 * 
+			 * }}}}}
+			 */
+				
+					
+				
 		});
 		
 		
