@@ -1,13 +1,17 @@
 package application;
 
-public class FantasyLeagueController {
+import java.io.File;
+import java.util.Scanner;
 
+public class FantasyLeagueController {
+	
+	FantasyLeagueModel fantasyLeagueModel;
 	//Class fields
 	//None as of 02.11.22	
 	
 	//Constructor
-	public FantasyLeagueController(){
-		
+	public FantasyLeagueController(FantasyLeagueModel fantasyLeagueModel){
+		this.fantasyLeagueModel = fantasyLeagueModel;
 	}
 	
 	//Getter, setter methods
@@ -26,6 +30,69 @@ public class FantasyLeagueController {
 	 */
 	public void scanData() {
 		
+		boolean NewPlayer = true;
+		Player play;
+
+		
+		
+		String filename = "BallersBallin_sampledata_set2.txt";
+		
+		
+		try {
+			
+			Scanner scan = new Scanner(new File(filename));
+			while (scan.hasNext()) {
+				
+				scan.useDelimiter(",");
+			
+				String fullname = scan.next();
+				String team = scan.next();
+				int jersey = scan.nextInt();
+				String position = scan.next();
+				int points = scan.nextInt();
+				int rebounds = scan.nextInt();
+				int assists = scan.nextInt();
+				int min = scan.nextInt();
+				
+				if (position.equals("CENTRE")) {
+			Player player = new Player(Position.CENTRE, fullname, team, jersey);
+			fantasyLeagueModel.getPlayers().add(player);
+			PlayerGameStats round = new PlayerGameStats(player, points, assists, rebounds, min, 1);
+			fantasyLeagueModel.getGamestats().add(round);
+			PlayerSeasonStats season = new PlayerSeasonStats(player);
+			season.addGameStats(round);
+			
+				}
+				else if (position.equals("GUARD")) {
+					Player player = new Player(Position.CENTRE, fullname, team, jersey);
+					fantasyLeagueModel.getPlayers().add(player);
+					PlayerGameStats round = new PlayerGameStats(player, points, assists, rebounds, min, 1);
+					fantasyLeagueModel.getGamestats().add(round);
+					PlayerSeasonStats season = new PlayerSeasonStats(player);
+					season.addGameStats(round);
+				}
+				else if (position.equals("FORWARD")) {
+					Player player = new Player(Position.FORWARD, fullname, team, jersey);
+					fantasyLeagueModel.getPlayers().add(player);
+					PlayerGameStats round = new PlayerGameStats(player, points, assists, rebounds, min, 1);
+					fantasyLeagueModel.getGamestats().add(round);
+					PlayerSeasonStats season = new PlayerSeasonStats(player);
+					season.addGameStats(round);
+				}
+				}
+
+		}
+		
+		catch(Exception e) {
+			
+		}
+		
+		for (PlayerGameStats p : fantasyLeagueModel.getGamestats()) {
+			
+			if (p.player.getName().equals("Isaac Morrison")) {
+				//System.out.print(p.getPoints());
+			}
+		}
 	}
 	
 

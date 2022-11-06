@@ -1,7 +1,8 @@
 package application;
 
 public class PlayerGameStats {
-	
+	Player player;
+	private int round;
 	private int points;
 	private int assists;
 	private int rebounds;
@@ -9,12 +10,14 @@ public class PlayerGameStats {
 	
 	private int PlayerGameScore;
 	
-	public PlayerGameStats(int p, int a, int r, int tp) {
-		
+	public PlayerGameStats(Player player,int p, int a, int r, int tp, int round) {
+		this.player = player;
 		this.points = p;
 		this.assists = a;
 		this.rebounds = r;
 		this.timePlayed = tp;
+		this.setRound(round);
+		
 		
 	}
 	
@@ -62,6 +65,16 @@ public class PlayerGameStats {
 
 	public void setPlayerGameScore(int playerGameScore) {
 		PlayerGameScore = playerGameScore;
+	}
+
+
+	public int getRound() {
+		return round;
+	}
+
+
+	public void setRound(int round) {
+		this.round = round;
 	}
 	
 }

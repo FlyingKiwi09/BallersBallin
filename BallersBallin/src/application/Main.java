@@ -16,6 +16,8 @@ import javafx.scene.text.Text;
 
 //test branch
 public class Main extends Application {
+	FantasyLeagueModel fantasyLeagueModel = new FantasyLeagueModel();
+	FantasyLeagueController maincontroller = new FantasyLeagueController(fantasyLeagueModel);
 	
 	//test user for testing the UI until it gets connected to the controller
 	private User testUser;
@@ -35,13 +37,13 @@ public class Main extends Application {
 	private Scene transferScene;
 	
 	private Stack<Scene> historyForGoingBack = new Stack<Scene>();
-	
+
 	
 	@Override
 	public void start(Stage primaryStage) {
 		// store the primaryStage to the UI so the scene can be changed on different button clicks
 		this.primaryStage = primaryStage;
-		
+
 		try {
 			//set up the test user
 			setUpTestUser();
@@ -74,6 +76,40 @@ public class Main extends Application {
 	/*PRIVATE METHODS SET UP THE DIFFERENT SCENES OF THE UI*/
 
 	private void setUpLoginScene() {
+		//creating a model and a controller.
+
+		//scans the hardcoded players in with their current weekly points.
+		maincontroller.scanData();
+		
+		//populating hardcoded teams from the list of players in the fantasty league model.
+		Team a = new Team("Team A");
+		for (Player p : fantasyLeagueModel.getPlayers()) {
+			
+			a.addPlayer(p);
+		}
+		
+		
+		Team b = new Team("Team B");
+		b.addPlayer(fantasyLeagueModel.getPlayers().get(0));
+		b.addPlayer(fantasyLeagueModel.getPlayers().get(1));
+		b.addPlayer(fantasyLeagueModel.getPlayers().get(2));
+		
+		//creating hardcoded users 
+		User userOne = new User();
+		FantasyLeagueAdministrator userTwo = new FantasyLeagueAdministrator();
+		
+		
+		//creating two leagues, adding teams to the league and adding to the model.
+		League leagueOne = new League(userTwo, "LeagueOne");
+		League leagueTwo = new League(userTwo, "LeagueTwo");
+		
+		leagueOne.addTeams(a);
+		leagueOne.addTeams(b);
+		leagueTwo.addTeams(a);
+		fantasyLeagueModel.getLeagues().add(leagueOne);
+		fantasyLeagueModel.getLeagues().add(leagueTwo);
+		
+		
 		VBox root = new VBox();
 		loginScene = new Scene(root,WIDTH,HEIGHT);
 		loginScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -157,8 +193,15 @@ public class Main extends Application {
 	// for now myLeaguesScene is shown directly from the loginButton...
 	public void showMyLeaguesScene(User user) {
 
+<<<<<<< BallersBallin/src/application/Main.java
 		// update leagues list
 		myLeaguesScene.updateLeaguesList(user.getLeagues());
+=======
+		// hard coded leagues for UI demo
+
+		// update leagues list
+		myLeaguesScene.updateLeaguesList(fantasyLeagueModel.getLeagues());
+>>>>>>> BallersBallin/src/application/Main.java
 		
 		// set myLeaguesScene to primary stage
 		this.primaryStage.setScene(myLeaguesScene.getMyLeaguesScene());

@@ -8,10 +8,17 @@ public class FantasyLeagueModel {
 	private ArrayList<User> 		users;
 	private ArrayList<Player> 		players;
 	private ArrayList<League> 		leagues;
-	
+	private ArrayList<PlayerGameStats>  gamestats;
+	private ArrayList<PlayerSeasonStats> seasonstats;
 	
 	//constructor
 	public FantasyLeagueModel() {
+		this.players = new ArrayList<Player>();
+		this.users = new ArrayList<User>();
+		this.leagues = new ArrayList<League>();
+		this.setGamestats(new ArrayList<PlayerGameStats>());
+		this.seasonstats = new ArrayList<PlayerSeasonStats>();
+		
 		
 	}
 
@@ -24,8 +31,24 @@ public class FantasyLeagueModel {
 
 	public ArrayList<League> getLeagues() 				{	return leagues;			}
 	public void setLeagues(ArrayList<League> leagues) 	{	this.leagues = leagues;	}
+
+	public ArrayList<PlayerGameStats> getGamestats() {
+		return gamestats;
+	}
+
+	public void setGamestats(ArrayList<PlayerGameStats> gamestats) {
+		this.gamestats = gamestats;
+	}
+
+	public ArrayList<PlayerSeasonStats> getSeasonstats() {
+		return seasonstats;
+	}
+
+	public void setSeasonstats(ArrayList<PlayerSeasonStats> seasonstats) {
+		this.seasonstats = seasonstats;
+	}
 	
-	
+
 
 	
 	

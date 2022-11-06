@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Team {
 	private ArrayList<TeamRoundStats> teamRoundHistory  = new ArrayList<TeamRoundStats>();
-	ArrayList<Player> players = new ArrayList<Player>();
+	private ArrayList<Player> players = new ArrayList<Player>();
 	//can't create getter and setter due to player class not existing
 	private int roundScore;
 	private String name;
@@ -15,15 +15,12 @@ public class Team {
 	
 	
 	
-	public Team(String name, ArrayList<Player> players, ArrayList<TeamRoundStats> teamRoundHistory) {
-		this.name = name;
+	public Team(String name) {
+		this.setName(name);
 		this.budget = 50;
 		this.spending = 0;
 		this.roundScore = 0;
 		this.totalscore = 0;
-		this.players = players;
-		this.teamRoundHistory = teamRoundHistory;
-		
 	}
 	
 	public void calculateWeeklyScore() {
@@ -34,8 +31,8 @@ public class Team {
 		
 	}
 	
-	public void addPlayer(Position p) {
-		
+	public void addPlayer(Player p) {
+		this.getPlayers().add(p);
 	}
 
 	ArrayList<TeamRoundStats> getTeamRoundHistory() {
@@ -86,6 +83,14 @@ public class Team {
 
 	void setSpending(int spending) {
 		this.spending = spending;
+	}
+
+	ArrayList<Player> getPlayers() {
+		return players;
+	}
+
+	void setPlayers(ArrayList<Player> players) {
+		this.players = players;
 	}
 
 }
