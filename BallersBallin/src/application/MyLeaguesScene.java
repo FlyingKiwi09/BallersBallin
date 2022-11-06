@@ -50,7 +50,7 @@ public class MyLeaguesScene {
 		myLeaguesList.getColumns().addAll(leagueName, leagueRanking);
 		
 		for (League league : list) {
-			myLeaguesList.getItems().add(league)
+			myLeaguesList.getItems().add(league);
 		}
 		
 	}
