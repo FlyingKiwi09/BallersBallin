@@ -19,8 +19,15 @@ public class Main extends Application {
 	FantasyLeagueModel fantasyLeagueModel = new FantasyLeagueModel();
 	FantasyLeagueController maincontroller = new FantasyLeagueController(fantasyLeagueModel);
 	
+<<<<<<< BallersBallin/src/application/Main.java
 	//test user for testing the UI until it gets connected to the controller
 	private User testUser;
+=======
+	//test
+	//test2
+	private final int WIDTH = 200;
+	private final int HEIGHT = 400;
+>>>>>>> BallersBallin/src/application/Main.java
 	
 	// controller
 	private FantasyLeagueController controller;
