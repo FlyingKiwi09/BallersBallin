@@ -1,7 +1,7 @@
 package application;
 
 public class PlayerGameStats {
-	Player player;
+	//Player player;
 	private int round;
 	private int points;
 	private int assists;
@@ -10,8 +10,8 @@ public class PlayerGameStats {
 	
 	private int PlayerGameScore;
 	
-	public PlayerGameStats(Player player,int p, int a, int r, int tp, int round) {
-		this.player = player;
+	public PlayerGameStats(int p, int a, int r, int tp, int round) {
+		//this.player = player;
 		this.points = p;
 		this.assists = a;
 		this.rebounds = r;

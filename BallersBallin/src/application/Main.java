@@ -47,6 +47,8 @@ public class Main extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) {
+		
+		
 		// store the primaryStage to the UI so the scene can be changed on different button clicks
 		this.primaryStage = primaryStage;
 
@@ -80,9 +82,14 @@ public class Main extends Application {
 
 	private void setUpLoginScene() {
 		//creating a model and a controller.
+		
+		//maincontroller.scanData();
+		maincontroller.updatePlayerStats();
+		maincontroller.printPlayerTest();
+		
 
 		//scans the hardcoded players in with their current weekly points.
-		maincontroller.scanData();
+		
 		
 		//populating hardcoded teams from the list of players in the fantasty league model.
 //		Team a = new Team("Team A");
