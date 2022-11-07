@@ -8,8 +8,8 @@ public class FantasyLeagueAdministrator extends User{
 	private ArrayList<League> 	leaguesIControl;
 	
 	//constructor
-	FantasyLeagueAdministrator(){
-		
+	FantasyLeagueAdministrator(String username, String password){
+		super(username, password);
 	}
 	
 		

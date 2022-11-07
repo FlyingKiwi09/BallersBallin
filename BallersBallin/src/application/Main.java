@@ -85,6 +85,11 @@ public class Main extends Application {
 		//creating a model and a controller.
 		
 		//maincontroller.scanData();
+		
+		//load JPs hardcoded testdata
+		TestUser testuser = new TestUser(maincontroller);
+		testuser.addTestUser();
+		
 		maincontroller.updatePlayerStats();
 		maincontroller.printPlayerTest();
 		
@@ -106,8 +111,8 @@ public class Main extends Application {
 //		b.addPlayer(maincontroller.getPlayers().get(2));
 //		
 		//creating hardcoded users 
-		User userOne = new User();
-		FantasyLeagueAdministrator userTwo = new FantasyLeagueAdministrator();
+//		User userOne = new User();
+//		FantasyLeagueAdministrator userTwo = new FantasyLeagueAdministrator();
 //		
 //		
 //		//creating two leagues, adding teams to the league and adding to the model.
