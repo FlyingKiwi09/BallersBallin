@@ -9,8 +9,6 @@ public class LeagueRoundStats {
 	public LeagueRoundStats(ArrayList<TeamRoundStats> teamsStats) {
 		this.week = 0;
 		this.teamsStats = teamsStats;
-		
-		
 	}
 
 	int getWeek() {

@@ -1,5 +1,5 @@
 package application;
 
 public enum Position {
-	CENTER, FORWARD, GUARD
+	CENTRE, GUARD, FORWARD
 }

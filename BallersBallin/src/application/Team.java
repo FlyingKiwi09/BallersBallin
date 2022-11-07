@@ -5,8 +5,9 @@ import java.util.ArrayList;
 
 public class Team {
 	private ArrayList<TeamRoundStats> teamRoundHistory  = new ArrayList<TeamRoundStats>();
-	ArrayList<Player> players = new ArrayList<Player>();
+	private ArrayList<Player> players = new ArrayList<Player>();
 	//can't create getter and setter due to player class not existing
+	private int roundScore;
 	private String name;
 	private int totalscore;
 	private int budget;
@@ -14,14 +15,12 @@ public class Team {
 	
 	
 	
-	public Team(String name, ArrayList<Player> players, ArrayList<TeamRoundStats> teamRoundHistory) {
+	public Team(String name) {
 		this.setName(name);
 		this.budget = 50;
 		this.spending = 0;
+		this.roundScore = 0;
 		this.totalscore = 0;
-		this.players = players;
-		this.teamRoundHistory = teamRoundHistory;
-		
 	}
 	
 	public void calculateWeeklyScore() {
@@ -32,8 +31,8 @@ public class Team {
 		
 	}
 	
-	public void addPlayer(Position p) {
-		
+	public void addPlayer(Player p) {
+		this.getPlayers().add(p);
 	}
 
 	ArrayList<TeamRoundStats> getTeamRoundHistory() {
@@ -44,19 +43,29 @@ public class Team {
 		this.teamRoundHistory = teamRoundHistory;
 	}
 
-	String getName() {
+	public String getName() {
 		return name;
 	}
 
-	void setName(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
-	int getTotalscore() {
+
+
+	public int getRoundScore() {
+		return roundScore;
+	}
+
+	public void setRoundScore(int roundScore) {
+		this.roundScore = roundScore;
+	}
+
+	public int getTotalscore() {
 		return totalscore;
 	}
 
-	void setTotalscore(int totalscore) {
+	public void setTotalscore(int totalscore) {
 		this.totalscore = totalscore;
 	}
 
@@ -74,6 +83,14 @@ public class Team {
 
 	void setSpending(int spending) {
 		this.spending = spending;
+	}
+
+	ArrayList<Player> getPlayers() {
+		return players;
+	}
+
+	void setPlayers(ArrayList<Player> players) {
+		this.players = players;
 	}
 
 }

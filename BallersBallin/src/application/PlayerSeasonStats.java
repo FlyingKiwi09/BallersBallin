@@ -5,28 +5,25 @@ import java.util.ArrayList;
 public class PlayerSeasonStats {
 	
 	private ArrayList<PlayerGameStats> gameStatistics;
-	
+//	Player player;
 	private int totalPoints;
 	private int totalAssists;
 	private int totalRebounds;
 	private int totalTimePlayed;
 	private int playerSeasonScore;
+	private double pointsAverage, assistsAverage, reboundsAverage, timePlayedAverage, playerScoreAverage;
+	private int year;
 	
-	private double pointsAverage;
-	private double assistsAverage;
-	private double reboundsAverage;
-	private double timePlayedAverage;
-	private double playerScoreAverage;
-	
-	
-	public PlayerSeasonStats() {
+	public PlayerSeasonStats(int year) {
 		
 		gameStatistics = new ArrayList<PlayerGameStats>();
-		
+//		this.player = player;
 		this.totalPoints = 0;
 		this.totalAssists = 0;
 		this.totalRebounds = 0;
 		this.totalTimePlayed = 0;
+		
+		this.setYear(year);
 		
 		this.playerSeasonScore = 0;
 		
@@ -172,6 +169,18 @@ public class PlayerSeasonStats {
 
 	public void setPlayerSeasonScore(int playerSeasonScore) {
 		this.playerSeasonScore = playerSeasonScore;
+	}
+
+
+
+	public int getYear() {
+		return year;
+	}
+
+
+
+	public void setYear(int year) {
+		this.year = year;
 	}
 	
 	

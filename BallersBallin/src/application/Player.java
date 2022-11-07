@@ -9,7 +9,7 @@ public class Player {
 	ArrayList<PlayerSeasonStats> seasonStats;
 	
 	Position position;
-	String name;
+	private String name;
 	String NBLTeamName;
 	int jerseyNumber;
 	int Id;
@@ -34,7 +34,7 @@ public class Player {
 		this.name = n;
 		this.NBLTeamName= tn;
 		this.jerseyNumber = jn;
-		this.price = 5;
+		this.position = p;
 		
 		IDCount++;
 		this.Id = IDCount;
@@ -46,7 +46,7 @@ public class Player {
 		
 		this.historicalPlayerScore = 0;
 		
-		this.updatePrice();
+		//this.updatePrice();
 		
 	}
 	
@@ -57,11 +57,11 @@ public class Player {
 		 double tempPrice = currentSeason.getPointsAverage()-this.leagueAvgPoints
 				 			+ currentSeason.getAssistsAverage()-this.leagueAvgAssists
 				 			+ currentSeason.getReboundsAverage()-this.leagueAvgRebounds
-				 			//convert minutes to seconds
-				 			+ currentSeason.getTimePlayedAverage()-(this.leagueAvgMins*60);
+				 			//convert minutes to seconds divide by ten to reduce impact of minutes
+				 			+ (currentSeason.getTimePlayedAverage()-(this.leagueAvgMins*60))/10;
 				 			
 		 
-		 this.price += tempPrice;
+		 this.price = tempPrice;
 		
 	}
 	
@@ -78,6 +78,9 @@ public class Player {
 		
 	}
 	
+	public String myToString() {
+		return this.name + " " + this.NBLTeamName + " " + this.position + " " + this.jerseyNumber;
+	}
 	
 	public ArrayList<PlayerSeasonStats> getSeasonStats() {
 		return seasonStats;
@@ -162,7 +165,9 @@ public class Player {
 		this.historicalPlayerScore = historicalPlayerScore;
 	}
 	
-	
+	public String toString() {
+		return this.getName() + " " + this.getPosition().name() + " " + this.getNBLTeamName();
+	}
 	
 	
 }
