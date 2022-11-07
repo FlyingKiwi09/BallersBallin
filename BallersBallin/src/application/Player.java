@@ -1,5 +1,6 @@
 package application;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class Player {
@@ -59,9 +60,15 @@ public class Player {
 				 			+ currentSeason.getReboundsAverage()-this.leagueAvgRebounds
 				 			//convert minutes to seconds divide by ten to reduce impact of minutes
 				 			+ (currentSeason.getTimePlayedAverage()-(this.leagueAvgMins*60))/10;
-				 			
+				 
+		 //forcing 2dp
+		 tempPrice = tempPrice/10 + 10;
+		 tempPrice = tempPrice*100;
+		 tempPrice = Math.round(tempPrice);
+		 tempPrice = tempPrice/100;
 		 
 		 this.price = tempPrice;
+		 
 		
 	}
 	
