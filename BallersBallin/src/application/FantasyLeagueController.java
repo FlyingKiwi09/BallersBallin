@@ -204,16 +204,16 @@ public class FantasyLeagueController {
 	 * 
 	 */
 	public void updatePlayerStats() {
-		this.scanData();
-		for(Player p : fantasyLeagueModel.getPlayers()) {
-			p.updatePrice();
-			System.out.print(p.getName() + " price: " + p.getPrice());
-		}
-		this.scanData();
-		for(Player p : fantasyLeagueModel.getPlayers()) {
-			p.updatePrice();
-			System.out.print(p.getName() + " price: " + p.getPrice());
-		}
+//		this.scanData();
+//		for(Player p : fantasyLeagueModel.getPlayers()) {
+//			p.updatePrice();
+//			System.out.print(p.getName() + " price: " + p.getPrice());
+//		}
+//		this.scanData();
+//		for(Player p : fantasyLeagueModel.getPlayers()) {
+//			p.updatePrice();
+//			System.out.print(p.getName() + " price: " + p.getPrice());
+//		}
 	}
 	
 	

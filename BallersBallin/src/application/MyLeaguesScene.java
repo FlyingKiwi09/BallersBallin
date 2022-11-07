@@ -76,7 +76,7 @@ public class MyLeaguesScene {
 		
 
 		for (League league : list) {
-			myLeaguesList.getItems().add(league);
+			myLeaguesTableView.getItems().add(league);
 		}
 
 		// set the items of the table view to the observable list
