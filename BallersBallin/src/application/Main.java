@@ -4,6 +4,7 @@ import java.awt.Label;
 import java.util.ArrayList;
 import java.util.Stack;
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -25,8 +26,8 @@ public class Main extends Application {
 
 	//test
 	//test2
-	private final int WIDTH = 200;
-	private final int HEIGHT = 400;
+	private final int WIDTH = 390;
+	private final int HEIGHT = 550;
 
 	
 //	// controller
@@ -123,8 +124,12 @@ public class Main extends Application {
 		VBox root = new VBox();
 		loginScene = new Scene(root,WIDTH,HEIGHT);
 		loginScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		root.getStyleClass().add("root-center");
+		
 		
 		Text title = new Text("Login");
+		title.getStyleClass().add("title");
+		
 		
 		// set up username input
 		HBox nameHB = new HBox();
@@ -160,7 +165,7 @@ public class Main extends Application {
 		
 		// add to root
 		root.getChildren().addAll(title, nameHB, passwordHB, buttonsHB);
-		
+		root.setMargin(title, new Insets(20));
 	}
 	
 	
