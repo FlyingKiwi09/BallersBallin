@@ -18,7 +18,6 @@ import javafx.scene.text.Text;
 public class Main extends Application {
 //	FantasyLeagueModel fantasyLeagueModel = new FantasyLeagueModel();
 	FantasyLeagueController maincontroller = new FantasyLeagueController();
-	
 
 	//test user for testing the UI until it gets connected to the controller
 	private User testUser;
