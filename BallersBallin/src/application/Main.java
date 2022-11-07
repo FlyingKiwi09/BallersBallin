@@ -52,7 +52,7 @@ public class Main extends Application {
 
 		try {
 			//set up the test user
-			setUpTestUser();
+			/* setUpTestUser(); */
 			
 			// set up all the scenes
 			setUpLoginScene();
@@ -227,66 +227,66 @@ public class Main extends Application {
 		this.primaryStage.setScene(this.historyForGoingBack.pop());
 	}
 	
-	private void setUpTestUser() {
+/*	private void setUpTestUser() {
 		
 		
 //		//players
-//		ArrayList<Player> myPlayers = new ArrayList<Player>();
-//		myPlayers.add(new Player(Position.CENTER, "JP", "Wellington", 1, 100000));
-//		myPlayers.add(new Player(Position.POINT_GUARD, "Jessie", "Wellington", 3, 200000));
-//		myPlayers.add(new Player(Position.POWER_FORWARD, "Tom", "Wellington", 5, 150000));
-//		myPlayers.add(new Player(Position.SMALL_FORWARD, "Harry", "Wellington", 7, 170000));
-//		myPlayers.add(new Player(Position.CENTER, "Keifer", "Wellington", 9, 220000));
-//		myPlayers.add(new Player(Position.SHOOTING_GUARD, "Alina", "Wellington", 11, 90000));
+	ArrayList<Player> myPlayers = new ArrayList<Player>();
+	myPlayers.add(new Player(Position.CENTRE, "JP", "Wellington", 1));
+		myPlayers.add(new Player(Position.GUARD, "Jessie", "Wellington", 3));
+	myPlayers.add(new Player(Position.FORWARD, "Tom", "Wellington", 5));
+	myPlayers.add(new Player(Position.FORWARD, "Harry", "Wellington", 7));
+	myPlayers.add(new Player(Position.CENTRE, "Keifer", "Wellington", 9));		
+	myPlayers.add(new Player(Position.GUARD, "Alina", "Wellington", 11));
+		
 //		
-//		
-//		ArrayList<Player> friendsPlayers = new ArrayList<Player>();
-//		friendsPlayers.add(new Player(Position.CENTER, "Josh", "Auckland", 2, 600000));
-//		friendsPlayers.add(new Player(Position.SHOOTING_GUARD, "Deb", "Christchurch", 4, 700000));
-//		friendsPlayers.add(new Player(Position.SHOOTING_GUARD, "Jude", "Wellington", 6, 300000));
-//		friendsPlayers.add(new Player(Position.POINT_GUARD, "Sarah", "Wellington", 8,320000));
-//		friendsPlayers.add(new Player(Position.SMALL_FORWARD, "Ali", "Wellington", 10, 1000000));
-//		friendsPlayers.add(new Player(Position.POWER_FORWARD, "Miro", "Wellington", 12, 230000));
-//		
+	ArrayList<Player> friendsPlayers = new ArrayList<Player>();
+	friendsPlayers.add(new Player(Position.CENTRE, "Josh", "Auckland", 2));
+		friendsPlayers.add(new Player(Position.GUARD, "Deb", "Christchurch", 4));
+		friendsPlayers.add(new Player(Position.GUARD, "Jude", "Wellington", 6));
+		friendsPlayers.add(new Player(Position.GUARD, "Sarah", "Wellington", 8));
+		friendsPlayers.add(new Player(Position.FORWARD, "Ali", "Wellington", 10));
+		friendsPlayers.add(new Player(Position.FORWARD, "Miro", "Wellington", 12));
+		
 //		//round histories
-//		ArrayList<TeamRoundStats> myRoundsHistory = new ArrayList<TeamRoundStats>();
+		ArrayList<TeamRoundStats> myRoundsHistory = new ArrayList<TeamRoundStats>();
 //		
-//		ArrayList<TeamRoundStats> friendsRoundsHistory = new ArrayList<TeamRoundStats>();
+		ArrayList<TeamRoundStats> friendsRoundsHistory = new ArrayList<TeamRoundStats>();
 //		
 //		//test user team
-//		Team testUserTeam = new Team("My Team", myPlayers, myRoundsHistory);
+		Team testUserTeam = new Team("My Team");
 //		
 //		// other team
-//		Team friendsTeam = new Team("Friends Team", friendsPlayers, friendsRoundsHistory);
+		Team friendsTeam = new Team("Friends Team");
 //		
 //		// teams array
-//		ArrayList<Team> teams = new ArrayList<Team>();
-//		teams.add(testUserTeam);
-//		teams.add(friendsTeam);
+		ArrayList<Team> teams = new ArrayList<Team>();
+		teams.add(testUserTeam);
+		teams.add(friendsTeam);
 //		
 //		// admin and weekly league stats for league constructor
-//		FantasyLeagueAdministrator admin = new FantasyLeagueAdministrator();
+		FantasyLeagueAdministrator admin = new FantasyLeagueAdministrator();
 //		
-//		ArrayList<LeagueRoundStats> weeklyLeagueStats = new ArrayList<LeagueRoundStats>();
+		ArrayList<LeagueRoundStats> weeklyLeagueStats = new ArrayList<LeagueRoundStats>();
 //		
 //		// league
-//		League globalLeague = new League("Global League", teams, weeklyLeagueStats, admin);
+		League globalLeague = new League("Global League", teams, weeklyLeagueStats, admin);
 //		
-//		League anotherLeague = new League("Another League", teams, weeklyLeagueStats, admin);
+		League anotherLeague = new League("Another League", teams, weeklyLeagueStats, admin);
 //		
 //		// arraylist of leagues
-//		ArrayList<League> leagues = new ArrayList<League>();
-//		leagues.add(globalLeague);
-//		leagues.add(anotherLeague);
+		ArrayList<League> leagues = new ArrayList<League>();
+		leagues.add(globalLeague);
+		leagues.add(anotherLeague);
 //		
 //		// test user
-//		testUser = new User();
-//		testUser.setID(1);
-//		testUser.setUsername("Test User");
-//		testUser.setTeam(testUserTeam);
-//		testUser.setLeagues(leagues);
+	testUser = new User();
+	testUser.setID(1);
+	testUser.setUsername("Test User");
+	testUser.setTeam(testUserTeam);
+//	testUser.setLeagues(leagues);
 		
+	*/
 	
-	}
 }
 

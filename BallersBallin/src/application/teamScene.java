@@ -78,7 +78,8 @@ public class teamScene {
 		
 		// sort table by position column
 		teamsPlayerTableView.getSortOrder().add(seasonAverage);
-		
+		teamsPlayerTableView.getSortOrder().add(playerName);
+		teamsPlayerTableView.getSortOrder().add(weekPoints);
 		// set the items of the table view to the observable list
 		teamsPlayerTableView.setItems(teamList);
 		

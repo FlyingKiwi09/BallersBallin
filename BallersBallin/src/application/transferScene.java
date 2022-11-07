@@ -24,6 +24,7 @@ public class transferScene {
 		this.UI = UI;
 		setUpTeamScene(width, height);
 	}
+	
 
 	private void setUpTeamScene(int width, int height) {
 		VBox root = new VBox();
@@ -35,13 +36,18 @@ public class transferScene {
 		Image backImage = new Image("backImage.png", 20, 20, false, false, false);
 		ImageView backImageView = new ImageView(backImage);
 		Button backButton = new Button();
+		
 		backButton.setGraphic(backImageView);
 
 		backButton.setOnMouseClicked(event -> {
 
 			UI.goBack();
 		});
-		navBar.getChildren().add(backButton);
+		
+		Button TransferButton = new Button();
+		
+		
+		navBar.getChildren().addAll(backButton, TransferButton);
 
 		title = new Text("");
 		title.getStyleClass().add("title");
@@ -80,10 +86,10 @@ public class transferScene {
 		
 		// set the items of the table view to the observable list
 		
-		/*
-		 * if (transferPLayer.position == clicked.targetTeam.position) {
-		 * playersTransferTableView.setItems(teamList); }
-		 */
+		// create to temp players one for the one being transfered and the replacement.
+		  if (transferPLayer.position == clicked.targetTeam.position)  {
+		  playersTransferTableView.setItems(teamList); }
+		 
 		// set on click event for the table view
 		playersTransferTableView.setOnMouseClicked(event -> {
 
