@@ -9,12 +9,15 @@ import javax.swing.JFileChooser;
 public class FantasyLeagueController {
 	
 	FantasyLeagueModel fantasyLeagueModel;
+	loginSignup loginSignupChecker;
+
 	//Class fields
 	//None as of 02.11.22	
 	
 	//Constructor
 	public FantasyLeagueController(){
 		this.fantasyLeagueModel = new FantasyLeagueModel();
+		this.loginSignupChecker = new loginSignup();
 	}
 	
 	//Getter, setter methods
@@ -204,16 +207,16 @@ public class FantasyLeagueController {
 	 * 
 	 */
 	public void updatePlayerStats() {
-		this.scanData();
-		for(Player p : fantasyLeagueModel.getPlayers()) {
-			p.updatePrice();
-			System.out.print(p.getName() + " price: " + p.getPrice());
-		}
-		this.scanData();
-		for(Player p : fantasyLeagueModel.getPlayers()) {
-			p.updatePrice();
-			System.out.print(p.getName() + " price: " + p.getPrice());
-		}
+//		this.scanData();
+//		for(Player p : fantasyLeagueModel.getPlayers()) {
+//			p.updatePrice();
+//			System.out.print(p.getName() + " price: " + p.getPrice());
+//		}
+//		this.scanData();
+//		for(Player p : fantasyLeagueModel.getPlayers()) {
+//			p.updatePrice();
+//			System.out.print(p.getName() + " price: " + p.getPrice());
+//		}
 	}
 	
 	
@@ -255,6 +258,10 @@ public class FantasyLeagueController {
 	
 	public ArrayList<League> getLeagues(){
 		return fantasyLeagueModel.getLeagues();
+	}
+	
+	public User loginCheck(String username, String password) {
+		return loginSignupChecker.loginValidation(fantasyLeagueModel, username, password);
 	}
 	
 }

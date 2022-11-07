@@ -76,7 +76,7 @@ public class MyLeaguesScene {
 		
 
 		for (League league : list) {
-			myLeaguesList.getItems().add(league);
+			myLeaguesTableView.getItems().add(league);
 		}
 
 		// set the items of the table view to the observable list
@@ -97,6 +97,8 @@ public class MyLeaguesScene {
 			//System.out.println(targetLeague.name);
 			UI.getHistoryForGoingBack().push(this.myLeaguesScene);
 			UI.showLeagueScene(targetLeague);
+		
+		
 		});
 	}
 	
