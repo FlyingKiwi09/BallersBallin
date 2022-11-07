@@ -14,8 +14,11 @@ public class User {
 	
 	
 	//Constructor
-	User(){
-		
+	User(String username, String password){
+		setUsername(username);
+		setPassword(password);
+		setID(getIDCount());
+		iterateIDCount();
 	}
 	
 	//Getter, setter methods
@@ -37,6 +40,11 @@ public class User {
 	public int getID() 									{	return ID;		}
 	public void setID(int iD) 							{	ID = iD;		}
 
+	public void iterateIDCount() {
+		int idcount = getIDCount();
+		idcount++;
+		setIDCount(idcount);
+	}	
 	
 	/*
 	 * This method should enter a user's team into an existing league
