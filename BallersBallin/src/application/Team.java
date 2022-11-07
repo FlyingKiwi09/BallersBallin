@@ -27,8 +27,18 @@ public class Team {
 		
 	}
 	
-	public void transfer(Player p, Position po) {
+	public void transfer(Player toBeRemoved, Player toBeAdded) {
 		
+		
+		for (int i =0; i<players.size();i++) {
+			
+			Player temp = players.get(i);
+		if (toBeRemoved.getName().equals(temp.getName())){
+			players.remove(temp);
+			players.add(toBeAdded);
+			break;
+		}
+	}
 	}
 	
 	public void addPlayer(Player p) {
