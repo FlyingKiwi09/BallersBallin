@@ -74,8 +74,14 @@ public class MyLeaguesScene {
 		
 		leagueName.setCellValueFactory(new PropertyValueFactory<League,String>("name"));
 		
+
+		for (League league : list) {
+			myLeaguesTableView.getItems().add(league);
+		}
+
 		// set the items of the table view to the observable list
 		myLeaguesTableView.setItems(leagueList);
+
 		
 		// set on click event for the table view
 		myLeaguesTableView.setOnMouseClicked(event -> {

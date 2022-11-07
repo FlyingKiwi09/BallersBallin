@@ -4,6 +4,7 @@ import java.awt.Label;
 import java.util.ArrayList;
 import java.util.Stack;
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -25,8 +26,8 @@ public class Main extends Application {
 
 	//test
 	//test2
-	private final int WIDTH = 200;
-	private final int HEIGHT = 400;
+	private final int WIDTH = 390;
+	private final int HEIGHT = 550;
 
 	
 //	// controller
@@ -47,6 +48,8 @@ public class Main extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) {
+		
+		
 		// store the primaryStage to the UI so the scene can be changed on different button clicks
 		this.primaryStage = primaryStage;
 
@@ -81,9 +84,14 @@ public class Main extends Application {
 
 	private void setUpLoginScene() {
 		//creating a model and a controller.
+		
+		//maincontroller.scanData();
+		maincontroller.updatePlayerStats();
+		maincontroller.printPlayerTest();
+		
 
 		//scans the hardcoded players in with their current weekly points.
-		maincontroller.scanData();
+		
 		
 		//populating hardcoded teams from the list of players in the fantasty league model.
 //		Team a = new Team("Team A");
@@ -117,14 +125,19 @@ public class Main extends Application {
 		VBox root = new VBox();
 		loginScene = new Scene(root,WIDTH,HEIGHT);
 		loginScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		root.getStyleClass().add("root-center");
+		
 		
 		Text title = new Text("Login");
+		title.getStyleClass().add("title");
+		
 		
 		// set up username input
 		HBox nameHB = new HBox();
 		Text nameLabel = new Text("Name");
 		TextField nameTF = new TextField();
 		nameHB.getChildren().addAll(nameLabel, nameTF);
+		nameHB.getStyleClass().add("center-hbox");
 		
 		
 		// set up pasword input
@@ -132,12 +145,14 @@ public class Main extends Application {
 		Text passwordLabel = new Text("Password");
 		TextField passwordTF = new TextField();
 		passwordHB.getChildren().addAll(passwordLabel, passwordTF);
+		passwordHB.getStyleClass().add("center-hbox");
 		
 		// set up buttons
 		HBox buttonsHB = new HBox();
 		Button loginButton = new Button("Login");
 		Button registerButton = new Button("Register");
 		buttonsHB.getChildren().addAll(loginButton, registerButton);
+		buttonsHB.getStyleClass().add("center-hbox");
 		
 		// set up on click listeners for buttons
 		loginButton.setOnMouseClicked(event -> {
@@ -154,7 +169,13 @@ public class Main extends Application {
 		
 		// add to root
 		root.getChildren().addAll(title, nameHB, passwordHB, buttonsHB);
-		
+		root.setMargin(title, new Insets(100,20,20,20));
+		root.setMargin(nameHB, new Insets(10));
+		root.setMargin(passwordHB, new Insets(10));
+		root.setMargin(buttonsHB, new Insets(10));
+		buttonsHB.setMargin(loginButton, new Insets(0,10,0,0));
+		passwordHB.setMargin(passwordLabel, new Insets(0,10,0,0));
+		nameHB.setMargin(nameLabel, new Insets(0,10,0,0));
 	}
 	
 	

@@ -1,1 +1,77 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+.button {
+	
+-fx-cursor: pointer;
+-fx-outline: 0;
+-fx-color: #ffffff;
+-fx-background-color: #fc9803;
+-fx-border-color: #d2691e;
+-fx-display: inline-block;
+-fx-font-weight: 400;
+-fx-line-height: 1.5;
+-fx-text-align: center;
+-fx-border: 1px solid transparent;
+-fx-padding: 6px 12px;
+-fx-font-size: 16px;
+-fx-border-radius: 8px;
+-fx-background-radius:8px;
+-fx-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;              
+}
+
+.button:hover {
+-fx-color: #ffffff;
+-fx-background-color: #d2691e;
+-fx-border-color: #d2691e;
+-fx-border-radius: 8px;
+
+}
+
+.root-center{
+	-fx-alignment: top-center;
+	-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #ffa500, #d2691e );
+}
+             
+                    
+.title {                  
+
+    -fx-font-family: 'Lucida Grande',Verdana,Geneva,Lucida,Arial,Helvetica,sans-serif;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+    }
+    
+.center-hbox{
+	-fx-text-alignment: center;
+	-fx-alignment: center;
+}
+
+.text-field{
+	-fx-padding: 6px 12px;
+    -fx-font-size: 16px;
+    -fx-font-weight: 400;
+    -fx-line-height: 1.5;
+    -fx-color: #212529;
+    -fx-background-color: #fff;
+    -fx-background-clip: padding-box;
+    -fx-border: 1px solid #d2691e;
+    -fx-appearance: none;
+    -fx-border-radius: 4px;
+    -fx-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+                
+.text-field:focused{
+    -fx-color: #212529;
+    -fx-border-color: #000000;
+
+
+}
+
+
+
+
+
+    
+    
+
+    

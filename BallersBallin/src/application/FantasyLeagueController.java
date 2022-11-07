@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.swing.JFileChooser;
+
 public class FantasyLeagueController {
 	
 	FantasyLeagueModel fantasyLeagueModel;
@@ -34,67 +36,162 @@ public class FantasyLeagueController {
 	 */
 	public void scanData() {
 		
-		boolean NewPlayer = true;
-		Player play;
+		System.out.print("scan being called");
+		
+//		boolean NewPlayer = true;
+//		Player play;
 
+		JFileChooser j = new JFileChooser();
+		int returnVal = j.showOpenDialog(null);
 		
-		
-		String filename = "BallersBallin_sampledata_set2.txt";
+		File f = j.getSelectedFile();
+		System.out.print(f.getName() + " selected");
 		
 		
 		try {
 			
-			Scanner scan = new Scanner(new File(filename));
-			while (scan.hasNext()) {
-				
-				scan.useDelimiter(",");
+			Scanner scan2 = new Scanner(f);
+			System.out.print("made 1st scanner");
 			
-				String fullname = scan.next();
-				String team = scan.next();
-				int jersey = scan.nextInt();
-				String position = scan.next();
-				int points = scan.nextInt();
-				int rebounds = scan.nextInt();
-				int assists = scan.nextInt();
-				int min = scan.nextInt();
-				
-				if (position.equals("CENTRE")) {
-			Player player = new Player(Position.CENTRE, fullname, team, jersey);
-			fantasyLeagueModel.getPlayers().add(player);
-			PlayerGameStats round = new PlayerGameStats(player, points, assists, rebounds, min, 1);
-			fantasyLeagueModel.getGamestats().add(round);
-			PlayerSeasonStats season = new PlayerSeasonStats(player);
-			season.addGameStats(round);
 			
+			
+			while (scan2.hasNext()) {
+				
+//				Scanner scan = new Scanner(scan2.nextLine());
+//				System.out.print("made 2nd scanner");
+//				scan.useDelimiter(","); //comma and space needed?
+			
+				int seasonYear = scan2.nextInt();
+				int game = scan2.nextInt();
+				
+				scan2.useDelimiter(",");
+				System.out.print(seasonYear + " " + game);
+				
+				while (scan2.hasNext()) {
+				
+				String fullname = scan2.next();
+				String team = scan2.next();
+				int jersey = scan2.nextInt();
+				String position = scan2.next();
+				int points = scan2.nextInt();
+				int rebounds = scan2.nextInt();
+				int assists = scan2.nextInt();
+				int min = scan2.nextInt();
+				
+				System.out.print(fullname+team+jersey+position+points+rebounds+assists+min);
+				
+				Player player = null;
+				
+				boolean playerExist = false;
+				for(Player p : this.getPlayers()) {
+					if (p.getName().equalsIgnoreCase(fullname)){
+						if(p.getNBLTeamName().equalsIgnoreCase(team)) {
+							if(p.getJerseyNumber() == jersey) {
+								playerExist = true;
+								player = p;
+							}
+						}
+					}
 				}
-				else if (position.equals("GUARD")) {
-					Player player = new Player(Position.CENTRE, fullname, team, jersey);
+				
+				
+				if(!playerExist) {
+					System.out.print("detected player not exist");
+					Position pos = null;
+					if (position.equalsIgnoreCase("CENTRE")) {
+						pos = Position.CENTRE;
+					}
+					else if (position.equalsIgnoreCase("GUARD")) {
+						pos = Position.GUARD;
+					}
+					else if (position.equalsIgnoreCase("FORWARD")) {
+						pos = Position.FORWARD;
+					}
+					
+					System.out.println(pos);
+					
+					Player pl = new Player(pos, fullname, team, jersey);
+					System.out.println(pl.myToString());
+					player = pl; 
 					fantasyLeagueModel.getPlayers().add(player);
-					PlayerGameStats round = new PlayerGameStats(player, points, assists, rebounds, min, 1);
-					fantasyLeagueModel.getGamestats().add(round);
-					PlayerSeasonStats season = new PlayerSeasonStats(player);
-					season.addGameStats(round);
+					System.out.println("adding new player");
 				}
-				else if (position.equals("FORWARD")) {
-					Player player = new Player(Position.FORWARD, fullname, team, jersey);
-					fantasyLeagueModel.getPlayers().add(player);
-					PlayerGameStats round = new PlayerGameStats(player, points, assists, rebounds, min, 1);
-					fantasyLeagueModel.getGamestats().add(round);
-					PlayerSeasonStats season = new PlayerSeasonStats(player);
-					season.addGameStats(round);
+				
+				PlayerSeasonStats thisSeason = null;
+				boolean seasonExist = false;
+				for(PlayerSeasonStats s : player.getSeasonStats()) {
+					if(s.getYear() == seasonYear) {
+						seasonExist = true;
+						thisSeason = s;
+					}
 				}
+				
+				if(!seasonExist) {
+					thisSeason = new PlayerSeasonStats(seasonYear);
+					System.out.print("adding new season");
+					player.addSeasonStats(thisSeason);
+					
+					System.out.print("adding season to player");
 				}
-
+				
+				PlayerGameStats round = new PlayerGameStats(points, assists, rebounds, min, game);
+				thisSeason.addGameStats(round);
+				System.out.print("adding game to season");
+				
+				
+				
+				
+//				
+//				if (position.equals("CENTRE")) {
+//			Player player = new Player(Position.CENTRE, fullname, team, jersey);
+//			fantasyLeagueModel.getPlayers().add(player);
+//			PlayerGameStats round = new PlayerGameStats(player, points, assists, rebounds, min, 1);
+//			fantasyLeagueModel.getGamestats().add(round);
+//			PlayerSeasonStats season = new PlayerSeasonStats(player);
+//			season.addGameStats(round);
+//			
+//				}
+//				else if (position.equals("GUARD")) {
+//					Player player = new Player(Position.GUARD, fullname, team, jersey);
+//					fantasyLeagueModel.getPlayers().add(player);
+//					PlayerGameStats round = new PlayerGameStats(player, points, assists, rebounds, min, 1);
+//					fantasyLeagueModel.getGamestats().add(round);
+//					PlayerSeasonStats season = new PlayerSeasonStats(player);
+//					season.addGameStats(round);
+//				}
+//				else if (position.equals("FORWARD")) {
+//					Player player = new Player(Position.FORWARD, fullname, team, jersey);
+//					fantasyLeagueModel.getPlayers().add(player);
+//					PlayerGameStats round = new PlayerGameStats(player, points, assists, rebounds, min, 1);
+//					fantasyLeagueModel.getGamestats().add(round);
+//					PlayerSeasonStats season = new PlayerSeasonStats(player);
+//					season.addGameStats(round);
+//				}
+//				}
+				}
+		}
 		}
 		
 		catch(Exception e) {
 			
 		}
 		
-		for (PlayerGameStats p : fantasyLeagueModel.getGamestats()) {
-			
-			if (p.player.getName().equals("Isaac Morrison")) {
-				//System.out.print(p.getPoints());
+//		for (PlayerGameStats p : fantasyLeagueModel.getGamestats()) {
+//			
+//			if (p.player.getName().equals("Isaac Morrison")) {
+//				//System.out.print(p.getPoints());
+//			}
+//		}
+	}
+	
+	
+	public void printPlayerTest() {
+		for(Player p : this.getPlayers()) {
+			for(PlayerSeasonStats s : p.getSeasonStats()) {
+				for(PlayerGameStats g : s.getGameStatistics()) {
+					System.out.print(p.getName() + " played " + s.getYear() + " game " + g.getRound() + " getting the following stats: ");
+					System.out.print("points: " + g.getPoints() + " assists " + g.getAssists() + " rebounds: " + g.getRebounds() + " seconds: " + g.getTimePlayed());
+				}
 			}
 		}
 	}
@@ -110,7 +207,16 @@ public class FantasyLeagueController {
 	 * 
 	 */
 	public void updatePlayerStats() {
-		
+//		this.scanData();
+//		for(Player p : fantasyLeagueModel.getPlayers()) {
+//			p.updatePrice();
+//			System.out.print(p.getName() + " price: " + p.getPrice());
+//		}
+//		this.scanData();
+//		for(Player p : fantasyLeagueModel.getPlayers()) {
+//			p.updatePrice();
+//			System.out.print(p.getName() + " price: " + p.getPrice());
+//		}
 	}
 	
 	
