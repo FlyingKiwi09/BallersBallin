@@ -11,10 +11,10 @@ public class Player {
 	
 	Position position;
 	private String name;
-	String NBLTeamName;
+	private String NBLTeamName;
 	int jerseyNumber;
 	int Id;
-	double price;
+	private double price;
 	
 	
 	final double leagueAvgMins = 17.4;

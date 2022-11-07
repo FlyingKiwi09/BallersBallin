@@ -61,7 +61,7 @@ public class LeagueScene {
 		leagueTeamsTableView.getItems().clear();
 		
 		// set title
-		this.title.setText(targetLeague.getName());
+		this.title.setText(targetLeague.getLeagueName());
 		
 		// get team list to set as observable list for tableview
 		ObservableList<Team> teamList = FXCollections.observableArrayList(targetLeague.getTeams());
@@ -102,7 +102,7 @@ public class LeagueScene {
 		System.out.println(targetTeam.getName()); // test
 		
 		// tell the UI to display the teamScene for the team associated with where the table is currently selected
-//			UI.showTeamScene(targetTeam);
+			UI.showTeamScene(targetTeam);
 		});
 		
 	}

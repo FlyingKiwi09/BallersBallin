@@ -72,7 +72,7 @@ public class MyLeaguesScene {
 		
 		myLeaguesTableView.getColumns().addAll(leagueName, view);
 		
-		leagueName.setCellValueFactory(new PropertyValueFactory<League,String>("name"));
+		leagueName.setCellValueFactory(new PropertyValueFactory<League,String>("leagueName"));
 		
 
 		for (League league : list) {

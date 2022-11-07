@@ -1,5 +1,7 @@
 package application;
 
+import java.util.ArrayList;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
@@ -57,41 +59,44 @@ public class transferScene {
 		// set nodes to root
 		root.getChildren().addAll(navBar, title, playersTransferTableView);
 	}
-	public void updatePlayerList(Player transferPLayer) {
+	
+	
+	public void updatePlayerList(Player leavingPlayer, ArrayList<Player> possibleTransfers) {
 		// clear previous list
 		playersTransferTableView.getItems().clear();
 		
 		// set title
-		this.title.setText(transferPLayer.getName());
+		this.title.setText(leavingPlayer.getName());
 		
 		// get team list to set as observable list for tableview
-		ObservableList<Player> teamList = FXCollections.observableArrayList(transferPLayer);
+		ObservableList<Player> playerList = FXCollections.observableArrayList(possibleTransfers);
 		
 		// set columns
 //		TableColumn<Team,String> position = new TableColumn<Team,String>("Pos"); couldn't set the Cell Value Factory for this 
 		TableColumn<Player,String> playerName = new TableColumn<Player,String>("Player");
-		TableColumn<Player,Integer> weekPoints = new TableColumn<Player,Integer>("Week points");
-		TableColumn<Player,Integer> seasonAverage = new TableColumn<Player,Integer>("Season Total");
+		TableColumn<Player,Integer> teamName = new TableColumn<Player,Integer>("Team");
+		TableColumn<Player,Integer> price = new TableColumn<Player,Integer>("Price");
 		
-		playersTransferTableView.getColumns().addAll(playerName, weekPoints, seasonAverage);
+		playersTransferTableView.getColumns().addAll(playerName, teamName, price);
 		
 		// set value factories
 		playerName.setCellValueFactory(new PropertyValueFactory<Player,String>("name"));
-		weekPoints.setCellValueFactory(new PropertyValueFactory<Player,Integer>("totalscore"));
-		seasonAverage.setCellValueFactory(new PropertyValueFactory<Player,Integer>("roundScore"));
+		teamName.setCellValueFactory(new PropertyValueFactory<Player,Integer>("NBLTeamName"));
+		price.setCellValueFactory(new PropertyValueFactory<Player,Integer>("price"));
 		
 		
 		// sort table by position column
-		playersTransferTableView.getSortOrder().add(seasonAverage);
+		playersTransferTableView.getSortOrder().add(price);
 		
 		// set the items of the table view to the observable list
 		
 		// create to temp players one for the one being transfered and the replacement.
-		  if (transferPLayer.position == clicked.targetTeam.position)  {
-		  playersTransferTableView.setItems(teamList); }
+		  
 		 
 		// set on click event for the table view
 		playersTransferTableView.setOnMouseClicked(event -> {
+			
+			
 
 		System.out.println(this.playersTransferTableView.getSelectionModel().getSelectedCells()); // test
 		
@@ -101,13 +106,28 @@ public class transferScene {
 		System.out.println(tablePosition.get(0).getRow()); // test
 		
 		// get the team associated with where the table is currently selected
-		//Team targetTeam = teamList.get(tablePosition.get(0).getRow());
+		Player transferPlayer = playerList.get(tablePosition.get(0).getRow());
 		
-		System.out.println(transferPLayer.getName()); // test
+//		if (leavingPlayer.position == clicked.targetTeam.position)  {
+//			  playersTransferTableView.setItems(playerList); }
 		
-		// tell the UI to display the teamScene for the team associated with where the table is currently selected
-//			UI.showTeamScene(targetTeam);
+		System.out.println(leavingPlayer.getName()); // test
+		
+		UI.updateTeamScene(leavingPlayer, transferPlayer);
+		
 		});
 		
 	}
+
+
+	public Scene getTransferScene() {
+		return transferScene;
+	}
+
+
+	public void setTransferScene(Scene transferScene) {
+		this.transferScene = transferScene;
+	}
+	
+	
 }

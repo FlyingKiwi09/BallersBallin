@@ -21,7 +21,7 @@ public class Main extends Application {
 	FantasyLeagueController maincontroller = new FantasyLeagueController();
 
 	//test user for testing the UI until it gets connected to the controller
-	private User testUser;
+	private User testuser;
 
 	//test
 	//test2
@@ -39,8 +39,8 @@ public class Main extends Application {
 	private MyLeaguesScene myLeaguesScene;
 	private LeagueScene leagueScene;
 	private teamScene teamScene;
-	private Scene playerScene;
-	private Scene transferScene;
+	private MyPlayerScene playerScene;
+	private transferScene transferScene;
 	
 	private Stack<Scene> historyForGoingBack = new Stack<Scene>();
 
@@ -61,10 +61,9 @@ public class Main extends Application {
 			myLeaguesScene = new MyLeaguesScene(this, WIDTH, HEIGHT);
 			leagueScene = new LeagueScene(this, WIDTH, HEIGHT);
 			teamScene = new teamScene(this, WIDTH, HEIGHT);
-			
-			setUpPlayerScene();  
-			setUpTransferScene();
-			
+			playerScene = new MyPlayerScene(this, WIDTH, HEIGHT);
+			transferScene = new transferScene(this, WIDTH, HEIGHT);
+	
 			// start by showing the login scene
 			primaryStage.setScene(loginScene);
 			
@@ -84,11 +83,12 @@ public class Main extends Application {
 	private void setUpLoginScene() {
 		//creating a model and a controller.
 		
-		//maincontroller.scanData();
+//		maincontroller.scanData();
 		
 		//load JPs hardcoded testdata
-		TestUser testuser = new TestUser(maincontroller);
+	    TestUser testuser = new TestUser(maincontroller);
 		testuser.addTestUser();
+		
 		
 		maincontroller.updatePlayerStats();
 		maincontroller.printPlayerTest();
@@ -168,7 +168,7 @@ public class Main extends Application {
 			
 			// push login scene before changing scenes
 			this.historyForGoingBack.push(loginScene);
-			showMyLeaguesScene(testUser);
+			showMyLeaguesScene(maincontroller.loginCheck(name, password));
 		});
 		
 		// add to root
@@ -222,14 +222,17 @@ public class Main extends Application {
 	// for now myLeaguesScene is shown directly from the loginButton...
 	public void showMyLeaguesScene(User user) {
 
-
+		for(League league: user.getLeagues()) {
+			System.out.println(league.getLeagueName());
+		}
 		// update leagues list
 		myLeaguesScene.updateLeaguesList(user.getLeagues());
-
+		
+		
 		// hard coded leagues for UI demo
 
-		// update leagues list
-		myLeaguesScene.updateLeaguesList(maincontroller.getLeagues());
+//		// update leagues list
+//		myLeaguesScene.updateLeaguesList(maincontroller.getLeagues());
 
 		
 		// set myLeaguesScene to primary stage
@@ -246,6 +249,38 @@ public class Main extends Application {
 		this.primaryStage.setScene(leagueScene.getLeagueScene());
 	
 		
+	}
+	
+	public void showTeamScene(Team targetTeam) {
+		teamScene.updatePlayerList(targetTeam);
+		
+		this.primaryStage.setScene(teamScene.getTeamScene());
+	}
+	
+	public void showPlayerScene(Player targetPlayer) {
+		playerScene.updatePlayerScene(targetPlayer);
+		
+		this.primaryStage.setScene(playerScene.getPlayerScene());
+	}
+	
+	public void showTransferScene(Player leavingPlayer) {
+		ArrayList<Player> possibleTransfers = maincontroller.getPossibleTransfers(leavingPlayer.getPosition());
+		
+		transferScene.updatePlayerList(leavingPlayer, possibleTransfers);
+		
+		this.primaryStage.setScene(transferScene.getTransferScene());
+	}
+	
+	public void updateTeamScene(Player leavingPlayer, Player transferPlayer) {
+		ArrayList<Player> currentPlayers = teamScene.getCurrentPlayerList();
+		
+		for (int i = 0; i < currentPlayers.size(); i++) {
+			if (leavingPlayer.equals(currentPlayers.get(i))){
+				currentPlayers.set(i, transferPlayer);
+			}
+		}
+		
+		this.primaryStage.setScene(teamScene.getTeamScene());
 	}
 	
 	public void goBack() {

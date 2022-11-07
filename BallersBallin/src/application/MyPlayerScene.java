@@ -19,6 +19,13 @@ public class MyPlayerScene {
 	private Scene playerScene;
 	private Text title;
 	private Player player;
+	
+	private Text nameText;
+	private Text teamText;
+	private Text priceText;
+	private Text pointsText;
+	private Text scoreText;  
+	private Button transferButton; 
 
 	public MyPlayerScene(Main UI,int width, int height) {
 		this.UI = UI;
@@ -36,14 +43,12 @@ public class MyPlayerScene {
 		ImageView backImageView = new ImageView(backImage);
 		Button backButton = new Button();
 		backButton.setGraphic(backImageView);
-		Button transferButton = new Button("transfer");
+		transferButton = new Button("transfer");
 		Button viewdetailButton = new Button("view detail");
-		Text nameText = new Text(player.getName());
-		Text teamText = new Text(player.getNBLTeamName());
-		Text priceText = new Text(String.valueOf(player.getPrice()));
-		Text pointsText = new Text(String.valueOf(player.getHistoricalPoints()));
-		Text scoreText = new Text(String.valueOf(player.getHistoricalPlayerScore()));
-		title = new Text("Player");
+		title = new Text();
+		priceText = new Text();
+		pointsText = new Text();
+		scoreText = new Text();
 		navBar.getChildren().addAll(backButton,title);
 		statBox.getChildren().addAll(priceText,pointsText,scoreText);
 		backButton.setOnMouseClicked(event -> {
@@ -51,12 +56,24 @@ public class MyPlayerScene {
 			UI.goBack();
 		});
 		
-		transferButton.setOnMouseClicked(event -> {
-
-		});
-			
+		
+		nameText = new Text();
+		teamText = new Text();
 		// set nodes to root
-		root.getChildren().addAll(navBar, nameText,teamText,statBox);
+		root.getChildren().addAll(navBar, nameText,teamText,statBox, viewdetailButton, transferButton);
+	}
+	
+	public void updatePlayerScene(Player player) {
+	    nameText.setText(player.getName());
+		teamText.setText(player.getNBLTeamName());
+		priceText.setText(String.valueOf(player.getPrice()));
+		pointsText.setText(String.valueOf(player.getHistoricalPoints()));
+		scoreText.setText(String.valueOf(player.getHistoricalPlayerScore()));
+		title.setText("Player");
+		
+		transferButton.setOnMouseClicked(event -> {
+			UI.showTransferScene(player);
+		});
 	}
 	
 
@@ -64,8 +81,9 @@ public class MyPlayerScene {
 		return playerScene;
 	}
 
-	public void setPlayerScene(Scene leagueScene) {
-		this.playerScene = leagueScene;
+	public void setPlayerScene(Scene playerScene) {
+		this.playerScene = playerScene;
 	}
 
+	
 }

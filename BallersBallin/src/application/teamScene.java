@@ -1,5 +1,7 @@
 package application;
 
+import java.util.ArrayList;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
@@ -19,6 +21,7 @@ public class teamScene {
 	private Main UI;
 	private Scene teamScene;
 	private TableView<Player> teamsPlayerTableView;
+	private ArrayList<Player> currentPlayerList;
 	private Text title;
 
 	public teamScene(Main UI, int width, int height) {
@@ -60,7 +63,8 @@ public class teamScene {
 		this.title.setText(targetTeam.getName());
 		
 		// get team list to set as observable list for tableview
-		ObservableList<Player> teamList = FXCollections.observableArrayList(targetTeam.getPlayers());
+		ObservableList<Player> playerList = FXCollections.observableArrayList(targetTeam.getPlayers());
+		currentPlayerList = targetTeam.getPlayers();
 		
 		// set columns
 //		TableColumn<Team,String> position = new TableColumn<Team,String>("Pos"); couldn't set the Cell Value Factory for this 
@@ -81,7 +85,7 @@ public class teamScene {
 		teamsPlayerTableView.getSortOrder().add(playerName);
 		teamsPlayerTableView.getSortOrder().add(weekPoints);
 		// set the items of the table view to the observable list
-		teamsPlayerTableView.setItems(teamList);
+		teamsPlayerTableView.setItems(playerList);
 		
 		// set on click event for the table view
 		teamsPlayerTableView.setOnMouseClicked(event -> {
@@ -94,13 +98,32 @@ public class teamScene {
 		System.out.println(tablePosition.get(0).getRow()); // test
 		
 		// get the team associated with where the table is currently selected
-		//Team targetTeam = teamList.get(tablePosition.get(0).getRow());
+		Player targetPlayer = playerList.get(tablePosition.get(0).getRow());
 		
 		System.out.println(targetTeam.getName()); // test
 		
 		// tell the UI to display the teamScene for the team associated with where the table is currently selected
-//			UI.showTeamScene(targetTeam);
+			UI.showPlayerScene(targetPlayer);
 		});
 		
 	}
+
+	public Scene getTeamScene() {
+		return teamScene;
+	}
+
+	public void setTeamScene(Scene teamScene) {
+		this.teamScene = teamScene;
+	}
+
+	public ArrayList<Player> getCurrentPlayerList() {
+		return currentPlayerList;
+	}
+
+	public void setCurrentPlayerList(ArrayList<Player> currentPlayerList) {
+		this.currentPlayerList = currentPlayerList;
+	}
+	
+	
+	
 }

@@ -196,6 +196,18 @@ public class FantasyLeagueController {
 		}
 	}
 	
+	public ArrayList<Player> getPossibleTransfers(Position currentPlayerPosition){
+		ArrayList<Player> possibleTransfers = new ArrayList<Player>();
+		
+		for (Player player : fantasyLeagueModel.getPlayers()) {
+			if (player.getPosition().equals(currentPlayerPosition)) {
+				possibleTransfers.add(player);
+			}
+		}
+
+		return possibleTransfers;
+	}
+	
 
 	/* 
 	 * This method should use the data from the scanData method above (once per week) to calculate/update 
@@ -207,16 +219,16 @@ public class FantasyLeagueController {
 	 * 
 	 */
 	public void updatePlayerStats() {
-//		this.scanData();
-//		for(Player p : fantasyLeagueModel.getPlayers()) {
-//			p.updatePrice();
-//			System.out.print(p.getName() + " price: " + p.getPrice());
-//		}
-//		this.scanData();
-//		for(Player p : fantasyLeagueModel.getPlayers()) {
-//			p.updatePrice();
-//			System.out.print(p.getName() + " price: " + p.getPrice());
-//		}
+		this.scanData();
+		for(Player p : fantasyLeagueModel.getPlayers()) {
+			p.updatePrice();
+			System.out.print(p.getName() + " price: " + p.getPrice());
+		}
+		this.scanData();
+		for(Player p : fantasyLeagueModel.getPlayers()) {
+			p.updatePrice();
+			System.out.print(p.getName() + " price: " + p.getPrice());
+		}
 	}
 	
 	
@@ -263,5 +275,6 @@ public class FantasyLeagueController {
 	public User loginCheck(String username, String password) {
 		return loginSignupChecker.loginValidation(fantasyLeagueModel, username, password);
 	}
+	
 	
 }

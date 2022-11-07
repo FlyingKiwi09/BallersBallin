@@ -19,6 +19,7 @@ public class User {
 		setPassword(password);
 		setID(getIDCount());
 		iterateIDCount();
+		leagues = new ArrayList<League>();
 	}
 	
 	//Getter, setter methods
