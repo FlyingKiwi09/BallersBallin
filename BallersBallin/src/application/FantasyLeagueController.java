@@ -7,12 +7,15 @@ import java.util.Scanner;
 public class FantasyLeagueController {
 	
 	FantasyLeagueModel fantasyLeagueModel;
+	loginSignup loginSignupChecker;
+
 	//Class fields
 	//None as of 02.11.22	
 	
 	//Constructor
 	public FantasyLeagueController(){
 		this.fantasyLeagueModel = new FantasyLeagueModel();
+		this.loginSignupChecker = new loginSignup();
 	}
 	
 	//Getter, setter methods
@@ -149,6 +152,10 @@ public class FantasyLeagueController {
 	
 	public ArrayList<League> getLeagues(){
 		return fantasyLeagueModel.getLeagues();
+	}
+	
+	public User loginCheck(String username, String password) {
+		return loginSignupChecker.loginValidation(fantasyLeagueModel, username, password);
 	}
 	
 }
