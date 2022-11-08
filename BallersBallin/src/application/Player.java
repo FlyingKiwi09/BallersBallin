@@ -101,9 +101,11 @@ public class Player {
 	public void setPosition(Position position) {
 		this.position = position;
 	}
+	
 	public String getName() {
 		return name;
 	}
+	
 	public void setName(String name) {
 		this.name = name;
 	}

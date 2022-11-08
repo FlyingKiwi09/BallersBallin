@@ -74,14 +74,14 @@ public class transferScene {
 		// set columns
 //		TableColumn<Team,String> position = new TableColumn<Team,String>("Pos"); couldn't set the Cell Value Factory for this 
 		TableColumn<Player,String> playerName = new TableColumn<Player,String>("Player");
-		TableColumn<Player,Integer> teamName = new TableColumn<Player,Integer>("Team");
+		TableColumn<Player,String> teamName = new TableColumn<Player,String>("Team");
 		TableColumn<Player,Integer> price = new TableColumn<Player,Integer>("Price");
 		
 		playersTransferTableView.getColumns().addAll(playerName, teamName, price);
 		
 		// set value factories
 		playerName.setCellValueFactory(new PropertyValueFactory<Player,String>("name"));
-		teamName.setCellValueFactory(new PropertyValueFactory<Player,Integer>("NBLTeamName"));
+		teamName.setCellValueFactory(new PropertyValueFactory<Player,String>("NBLTeamName"));
 		price.setCellValueFactory(new PropertyValueFactory<Player,Integer>("price"));
 		
 		
@@ -89,6 +89,7 @@ public class transferScene {
 		playersTransferTableView.getSortOrder().add(price);
 		
 		// set the items of the table view to the observable list
+		playersTransferTableView.setItems(playerList);
 		
 		// create to temp players one for the one being transfered and the replacement.
 		  

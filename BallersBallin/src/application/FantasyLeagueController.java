@@ -199,7 +199,10 @@ public class FantasyLeagueController {
 	public ArrayList<Player> getPossibleTransfers(Position currentPlayerPosition){
 		ArrayList<Player> possibleTransfers = new ArrayList<Player>();
 		
+		
+		
 		for (Player player : fantasyLeagueModel.getPlayers()) {
+			System.out.println(player.getName());
 			if (player.getPosition().equals(currentPlayerPosition)) {
 				possibleTransfers.add(player);
 			}

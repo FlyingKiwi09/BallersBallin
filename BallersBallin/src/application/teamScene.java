@@ -76,8 +76,8 @@ public class teamScene {
 		
 		// set value factories
 		playerName.setCellValueFactory(new PropertyValueFactory<Player,String>("name"));
-		weekPoints.setCellValueFactory(new PropertyValueFactory<Player,Integer>("totalscore"));
-		seasonAverage.setCellValueFactory(new PropertyValueFactory<Player,Integer>("roundScore"));
+//		weekPoints.setCellValueFactory(new PropertyValueFactory<Player,Integer>("totalscore"));
+//		seasonAverage.setCellValueFactory(new PropertyValueFactory<Player,Integer>("roundScore"));
 		
 		
 		// sort table by position column
