@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -33,6 +34,7 @@ public class teamScene {
 		VBox root = new VBox();
 		teamScene = new Scene(root, width, height);
 		teamScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		root.getStyleClass().add("root-center");
 
 		HBox navBar = new HBox();
 		// set up back button
@@ -51,20 +53,6 @@ public class teamScene {
 		title.getStyleClass().add("title");
 		// create tableview
 		teamsPlayerTableView = new TableView<Player>();
-
-		// set nodes to root
-		root.getChildren().addAll(navBar, title, teamsPlayerTableView);
-	}
-	public void updatePlayerList(Team targetTeam) {
-		// clear previous list
-		teamsPlayerTableView.getItems().clear();
-		
-		// set title
-		this.title.setText(targetTeam.getName());
-		
-		// get team list to set as observable list for tableview
-		ObservableList<Player> playerList = FXCollections.observableArrayList(targetTeam.getPlayers());
-		currentPlayerList = targetTeam.getPlayers();
 		
 		// set columns
 //		TableColumn<Team,String> position = new TableColumn<Team,String>("Pos"); couldn't set the Cell Value Factory for this 
@@ -84,6 +72,24 @@ public class teamScene {
 		teamsPlayerTableView.getSortOrder().add(seasonAverage);
 		teamsPlayerTableView.getSortOrder().add(playerName);
 		teamsPlayerTableView.getSortOrder().add(weekPoints);
+
+		// set nodes to root
+		root.getChildren().addAll(navBar, title, teamsPlayerTableView);
+		root.setMargin(teamsPlayerTableView, new Insets(10));
+	}
+	
+	public void updatePlayerList(Team targetTeam) {
+		// clear previous list
+		teamsPlayerTableView.getItems().clear();
+		
+		// set title
+		this.title.setText(targetTeam.getName());
+		
+		// get team list to set as observable list for tableview
+		ObservableList<Player> playerList = FXCollections.observableArrayList(targetTeam.getPlayers());
+		currentPlayerList = targetTeam.getPlayers();
+		
+		
 		// set the items of the table view to the observable list
 		teamsPlayerTableView.setItems(playerList);
 		
@@ -101,6 +107,12 @@ public class teamScene {
 		Player targetPlayer = playerList.get(tablePosition.get(0).getRow());
 		
 		System.out.println(targetTeam.getName()); // test
+		
+		// save this scene to the history in the UI before switching to the next scene
+		UI.getHistoryForGoingBack().push(this.teamScene);
+		
+		// clear the selection of item in the tableview
+		teamsPlayerTableView.getSelectionModel().clearSelection();
 		
 		// tell the UI to display the teamScene for the team associated with where the table is currently selected
 			UI.showPlayerScene(targetPlayer);

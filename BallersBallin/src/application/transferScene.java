@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -32,6 +33,7 @@ public class transferScene {
 		VBox root = new VBox();
 		transferScene = new Scene(root, width, height);
 		transferScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		root.getStyleClass().add("root-center");
 
 		HBox navBar = new HBox();
 		// set up back button
@@ -42,7 +44,6 @@ public class transferScene {
 		backButton.setGraphic(backImageView);
 
 		backButton.setOnMouseClicked(event -> {
-
 			UI.goBack();
 		});
 		
@@ -55,21 +56,6 @@ public class transferScene {
 		title.getStyleClass().add("title");
 		// create tableview
 		playersTransferTableView = new TableView<Player>();
-
-		// set nodes to root
-		root.getChildren().addAll(navBar, title, playersTransferTableView);
-	}
-	
-	
-	public void updatePlayerList(Player leavingPlayer, ArrayList<Player> possibleTransfers) {
-		// clear previous list
-		playersTransferTableView.getItems().clear();
-		
-		// set title
-		this.title.setText(leavingPlayer.getName());
-		
-		// get team list to set as observable list for tableview
-		ObservableList<Player> playerList = FXCollections.observableArrayList(possibleTransfers);
 		
 		// set columns
 //		TableColumn<Team,String> position = new TableColumn<Team,String>("Pos"); couldn't set the Cell Value Factory for this 
@@ -87,6 +73,24 @@ public class transferScene {
 		
 		// sort table by position column
 		playersTransferTableView.getSortOrder().add(price);
+
+		// set nodes to root
+		root.getChildren().addAll(navBar, title, playersTransferTableView);
+		root.setMargin(playersTransferTableView, new Insets(10));
+	}
+	
+	
+	public void updatePlayerList(Player leavingPlayer, ArrayList<Player> possibleTransfers) {
+		// clear previous list
+		playersTransferTableView.getItems().clear();
+		
+		// set title
+		this.title.setText(leavingPlayer.getName());
+		
+		// get team list to set as observable list for tableview
+		ObservableList<Player> playerList = FXCollections.observableArrayList(possibleTransfers);
+		
+		
 		
 		// set the items of the table view to the observable list
 		playersTransferTableView.setItems(playerList);
@@ -114,6 +118,8 @@ public class transferScene {
 		
 		System.out.println(leavingPlayer.getName()); // test
 		
+		// clear the selection of item in the tableview
+		playersTransferTableView.getSelectionModel().clearSelection();
 		UI.updateTeamScene(leavingPlayer, transferPlayer);
 		
 		});

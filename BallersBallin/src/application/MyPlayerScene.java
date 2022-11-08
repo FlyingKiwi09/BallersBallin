@@ -35,6 +35,7 @@ public class MyPlayerScene {
 		VBox root = new VBox();
 		playerScene = new Scene(root,width, height);
 		playerScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		root.getStyleClass().add("root-center");
 		
 		HBox navBar = new HBox();
 		HBox statBox = new HBox();
@@ -46,6 +47,7 @@ public class MyPlayerScene {
 		transferButton = new Button("transfer");
 		Button viewdetailButton = new Button("view detail");
 		title = new Text();
+		title.getStyleClass().add("title");
 		priceText = new Text();
 		pointsText = new Text();
 		scoreText = new Text();
@@ -72,6 +74,8 @@ public class MyPlayerScene {
 		title.setText("Player");
 		
 		transferButton.setOnMouseClicked(event -> {
+			// save this scene to the history in the UI before switching to the next scene
+			UI.getHistoryForGoingBack().push(this.playerScene);
 			UI.showTransferScene(player);
 		});
 	}

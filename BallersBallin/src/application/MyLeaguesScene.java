@@ -5,6 +5,7 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
@@ -34,6 +35,7 @@ public class MyLeaguesScene {
 		VBox root = new VBox();
 		myLeaguesScene = new Scene(root,width, height);
 		myLeaguesScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		root.getStyleClass().add("root-center");
 		
 		//set up nav bar
 		HBox navBar = new HBox();
@@ -42,21 +44,33 @@ public class MyLeaguesScene {
 		Button backButton = new Button();
 		backButton.setGraphic(backImageView);
 		
-		backButton.setOnMouseClicked(event -> {
-
-			UI.goBack();
-		});
-		
 		Text title = new Text("My Leagues");
+		title.getStyleClass().add("title");
 		
 		navBar.getChildren().add(backButton);
 		
 		// create tableview
 		myLeaguesTableView = new TableView<League>();
 		
+		// set up columns in tableView
+		TableColumn<League,String> leagueName = new TableColumn<League,String>("League Name");
+//		TableColumn<League,String> view = new TableColumn<League,String>("League Ranking");
+		
+		myLeaguesTableView.getColumns().addAll(leagueName);
+		
+		leagueName.setCellValueFactory(new PropertyValueFactory<League,String>("leagueName"));
+		
+		myLeaguesTableView.setMaxWidth(200);
+		leagueName.setMinWidth(200);
 		
 		// set nodes to root
 		root.getChildren().addAll(navBar, title, myLeaguesTableView);
+		root.setMargin(myLeaguesTableView, new Insets(10));
+		
+		// back method
+		backButton.setOnMouseClicked(event -> {	
+			UI.goBack();
+		});
 	}
 	
 	
@@ -67,17 +81,11 @@ public class MyLeaguesScene {
 		ObservableList<League> leagueList = FXCollections.observableArrayList(list);
 		
 		
-		TableColumn<League,String> leagueName = new TableColumn<League,String>("League Name");
-		TableColumn<League,String> view = new TableColumn<League,String>("League Ranking");
-		
-		myLeaguesTableView.getColumns().addAll(leagueName, view);
-		
-		leagueName.setCellValueFactory(new PropertyValueFactory<League,String>("leagueName"));
-		
 
-		for (League league : list) {
-			myLeaguesTableView.getItems().add(league);
-		}
+
+//		for (League league : list) {
+//			myLeaguesTableView.getItems().add(league);
+//		}
 
 		// set the items of the table view to the observable list
 		myLeaguesTableView.setItems(leagueList);
@@ -94,11 +102,13 @@ public class MyLeaguesScene {
 			
 			League targetLeague = leagueList.get(tablePosition.get(0).getRow());
 			
-			//System.out.println(targetLeague.name);
+			// save this scene to the history in the UI before switching to the next scene
 			UI.getHistoryForGoingBack().push(this.myLeaguesScene);
+			
+			// clear the selection of item in the tableview
+			myLeaguesTableView.getSelectionModel().clearSelection();
+			
 			UI.showLeagueScene(targetLeague);
-		
-		
 		});
 	}
 	

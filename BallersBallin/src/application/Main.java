@@ -215,25 +215,12 @@ public class Main extends Application {
 	
 	/*PUBLIC METHODS CAN BE CALLED FRON THE CONTROLLER TO SEND BACK DATA FOR SCENE UPDATES WHEN SWITCHING BETWEEN SCENES*/
 	
-	/*SHOW HOME SCENE*/
+	/*SHOW MY LEAGUES SCENE*/
 	// after validating user input, a system can call this method to display home page (myLeaguesScene)
-	// TODO: update method to accept a User from the controller
-	// update method to update the myLeaguesScene based on user recieved back from controller
-	// for now myLeaguesScene is shown directly from the loginButton...
 	public void showMyLeaguesScene(User user) {
 
-		for(League league: user.getLeagues()) {
-			System.out.println(league.getLeagueName());
-		}
 		// update leagues list
 		myLeaguesScene.updateLeaguesList(user.getLeagues());
-		
-		
-		// hard coded leagues for UI demo
-
-//		// update leagues list
-//		myLeaguesScene.updateLeaguesList(maincontroller.getLeagues());
-
 		
 		// set myLeaguesScene to primary stage
 		this.primaryStage.setScene(myLeaguesScene.getMyLeaguesScene());
@@ -242,9 +229,7 @@ public class Main extends Application {
 	public void showLeagueScene(League targetLeague) {
 		// update teams list
 		leagueScene.updateTeamsList(targetLeague);
-		
-		
-		
+
 		// set leagueScene to primary stage
 		this.primaryStage.setScene(leagueScene.getLeagueScene());
 	
