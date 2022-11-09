@@ -66,6 +66,11 @@ public class LeagueScene {
 		totalScore.setCellValueFactory(new PropertyValueFactory<Team,Integer>("totalscore"));
 		roundPoints.setCellValueFactory(new PropertyValueFactory<Team,Integer>("roundScore"));
 		
+		// set table width
+		leagueTeamsTableView.setMaxWidth(250);
+		teamName.setMinWidth(100);
+		roundPoints.setMinWidth(100);
+		totalScore.setMinWidth(49);
 		
 		// sort table by position column
 		leagueTeamsTableView.getSortOrder().add(totalScore);

@@ -72,6 +72,12 @@ public class teamScene {
 		teamsPlayerTableView.getSortOrder().add(seasonAverage);
 		teamsPlayerTableView.getSortOrder().add(playerName);
 		teamsPlayerTableView.getSortOrder().add(weekPoints);
+		
+		// set table width
+		teamsPlayerTableView.setMaxWidth(300);
+		playerName.setMinWidth(99);
+		seasonAverage.setMinWidth(99);
+		weekPoints.setMinWidth(99);
 
 		// set nodes to root
 		root.getChildren().addAll(navBar, title, teamsPlayerTableView);

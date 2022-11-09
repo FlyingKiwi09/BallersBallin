@@ -60,8 +60,9 @@ public class MyLeaguesScene {
 		
 		leagueName.setCellValueFactory(new PropertyValueFactory<League,String>("leagueName"));
 		
+		// set table width
 		myLeaguesTableView.setMaxWidth(200);
-		leagueName.setMinWidth(200);
+		leagueName.setMinWidth(199);
 		
 		// set nodes to root
 		root.getChildren().addAll(navBar, title, myLeaguesTableView);
