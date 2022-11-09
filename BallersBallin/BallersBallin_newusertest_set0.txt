@@ -1,0 +1,17 @@
+2022
+2
+Taane Samuel,Wellington Saints,2,FORWARD,10,3,4,1492,
+Jaylen Gerrand,Southland Sharks,6,GUARD,14,2,10,623,
+Aidan Tonge,Canturbury Rams,1,FORWARD,4,0,10,532,
+Maxwell Darling,Canturbury Rams,12,FORWARD,1,9,8,301,
+Daishon Knight,Southland Sharks,5,GUARD,13,1,1,1018,
+Kainoa Lepou,Auckland Tuatara,9,FORWARD,12,10,10,1542,
+Zach Mckenzie,Franklin Bulls,8,FORWARD,13,3,0,337,
+Joseph Ahie,Otago Nuggets,11,GUARD,14,9,5,1184,
+Isaac Davidson,Franklin Bulls,12,GUARD,4,5,9,509,
+Quake Webster,Southland Sharks,10,GUARD,0,0,3,1072,
+Jack Salt,Hawkes Bay Hawks,33,CENTRE,2,3,7,1643,
+Xavier Cooks,Wellington Saints,10,FORWARD,2,7,6,1759,
+Anthony Hilliard,Taranaki Airs,18,GUARD,9,10,10,1768,
+Jarrod West,Nelson Giants,23,GUARD,3,1,2,1076,
+Samuel Timmins,Otago Nuggets,33,CENTRE,13,6,3,1390,
