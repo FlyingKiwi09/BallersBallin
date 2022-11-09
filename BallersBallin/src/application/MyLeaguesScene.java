@@ -30,6 +30,12 @@ public class MyLeaguesScene {
 		setUpMyLeaguesScene(width, height);
 	}
 	
+	
+	/**
+	 * build up a tableview of league including the name and ranking
+	 * @param width
+	 * @param height
+	 */
 	private void setUpMyLeaguesScene(int width, int height) {
 		VBox root = new VBox();
 		myLeaguesScene = new Scene(root,width, height);
@@ -59,7 +65,11 @@ public class MyLeaguesScene {
 		root.getChildren().addAll(navBar, title, myLeaguesTableView);
 	}
 	
-	
+	/**
+	 * go through the list of league and update it,show it in tableview
+	 * make each line clickable ,while clicked take it to the matched team scene
+	 * @param list
+	 */
 	public void updateLeaguesList(ArrayList<League> list) {
 		// clear previous list
 		myLeaguesTableView.getItems().clear();

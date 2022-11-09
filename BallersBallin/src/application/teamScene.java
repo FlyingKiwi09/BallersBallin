@@ -28,7 +28,12 @@ public class teamScene {
 		this.UI = UI;
 		setUpTeamScene(width, height);
 	}
-
+	
+	/**
+	 * build up a tableview ,it shows the list of players including name,weekly points and total points
+	 * @param width
+	 * @param height
+	 */
 	private void setUpTeamScene(int width, int height) {
 		VBox root = new VBox();
 		teamScene = new Scene(root, width, height);
@@ -55,6 +60,12 @@ public class teamScene {
 		// set nodes to root
 		root.getChildren().addAll(navBar, title, teamsPlayerTableView);
 	}
+	
+	/**
+	 * use observable list to update the latest data,
+	 * make each line clickable ,while clicked take it to the matched player scene
+	 * @param targetTeam
+	 */
 	public void updatePlayerList(Team targetTeam) {
 		// clear previous list
 		teamsPlayerTableView.getItems().clear();
