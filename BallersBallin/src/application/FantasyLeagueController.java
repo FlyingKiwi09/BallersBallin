@@ -10,7 +10,7 @@ public class FantasyLeagueController {
 	
 	FantasyLeagueModel fantasyLeagueModel;
 	loginSignup loginSignupChecker;
-
+	File filetoPass;
 	//Class fields
 	//None as of 02.11.22	
 	
@@ -34,6 +34,8 @@ public class FantasyLeagueController {
 	 * If a player has changed teams e.g. WGN->AKL, the database should change this 
 	 * field in the player object
 	 */
+	
+	
 	public void scanData() {
 		
 		System.out.print("scan being called");
@@ -45,6 +47,7 @@ public class FantasyLeagueController {
 		int returnVal = j.showOpenDialog(null);
 		
 		File f = j.getSelectedFile();
+		filetoPass = j.getSelectedFile();
 		System.out.print(f.getName() + " selected");
 		
 		
@@ -185,6 +188,14 @@ public class FantasyLeagueController {
 	}
 	
 	
+	public File getFiletoPass() {
+		return filetoPass;
+	}
+
+	public void setFiletoPass(File filetoPass) {
+		this.filetoPass = filetoPass;
+	}
+
 	public void printPlayerTest() {
 		for(Player p : this.getPlayers()) {
 			for(PlayerSeasonStats s : p.getSeasonStats()) {

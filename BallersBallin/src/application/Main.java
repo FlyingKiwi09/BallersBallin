@@ -86,9 +86,9 @@ public class Main extends Application {
 //		maincontroller.scanData();
 		
 		//load JPs hardcoded testdata
-	    TestUser testuser = new TestUser(maincontroller);
-		testuser.addTestUser();
-		
+//	    TestUser testuser = new TestUser(maincontroller);
+//		testuser.addTestUser();
+//		
 		
 		maincontroller.updatePlayerStats();
 		maincontroller.printPlayerTest();
