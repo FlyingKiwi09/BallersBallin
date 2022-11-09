@@ -2,11 +2,11 @@ package application;
 
 import java.util.ArrayList;
 /**
- * 
+ * Leagues hold a number of teams that will compete with eachother. Each league must have an admin and a
+ * league name.
  * @author Ballers Ballin
  * @version 1
- * Class used to create a league. Each league should have a name and a list
- of teams that play in the league. Each league will need at least one administrator.
+ * 
  *
  */
 public class League {

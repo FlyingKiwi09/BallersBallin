@@ -4,11 +4,11 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
- * 
+ *  creates a player object which stores player statistics as well as information about the player.
  * @author Ballers Ballin
  * @version
  * 
- * creates a player object which stores player statistics as well as information about the player.
+ *
  *
  */
 public class Player {

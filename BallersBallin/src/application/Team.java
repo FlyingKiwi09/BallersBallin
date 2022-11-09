@@ -3,10 +3,10 @@ package application;
 import java.util.ArrayList;
 
 /**
- * 
+ * A team consists of a group of players the user has selected for their fantasy league team.
  * @author Ballers Ballin
  * @version 1 
- * A team consists of a group of players the user has selected for their fantasy league team.
+ * 
  *
  */
 public class Team {

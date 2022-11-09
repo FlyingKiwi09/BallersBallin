@@ -1,11 +1,11 @@
 package application;
 /**
- * 
+ *  Stores a rounds statistics for each individual player.
  * @author Ballers Ballin
  * @version 1
  *  
  *  <p>
- *  Stores a rounds statistics for each individual player.
+
  */
 public class PlayerGameStats {
 	//Player player;
