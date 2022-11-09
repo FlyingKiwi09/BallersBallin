@@ -29,8 +29,8 @@ public class Main extends Application {
 	private final int HEIGHT = 550;
 
 	
-//	// controller
-//	private FantasyLeagueController controller;
+	// controller
+	private FantasyLeagueController controller;
 	
 
 	
@@ -83,12 +83,12 @@ public class Main extends Application {
 	private void setUpLoginScene() {
 		//creating a model and a controller.
 		
-//		maincontroller.scanData();
+		maincontroller.scanData();
 		
 		//load JPs hardcoded testdata
-//	    TestUser testuser = new TestUser(maincontroller);
-//		testuser.addTestUser();
-//		
+	    TestUser testuser = new TestUser(maincontroller);
+		testuser.addTestUser();
+		
 		
 		maincontroller.updatePlayerStats();
 		maincontroller.printPlayerTest();

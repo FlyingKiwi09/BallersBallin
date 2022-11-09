@@ -6,11 +6,13 @@ import java.util.Scanner;
 
 import javax.swing.JFileChooser;
 /**
+ * 
+ * Class used to create and populate the fantasy league model
+ * from data retrieved from the NZNBL website or other source.
  * @author Ballers Ballin
  * @version 1.0
  *  
- * Class used to create and populate the fantasy league model
- * from data retrieved from the NZNBL website or other source.
+ 
  * 
  */
 public class FantasyLeagueController {

@@ -2,6 +2,8 @@ package application;
 
 import java.util.ArrayList;
 /**
+ * 
+ * User's that have ownership of a league.
  * @author Ballers Ballin
  * @version 1.0
  * 

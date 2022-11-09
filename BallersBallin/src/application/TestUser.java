@@ -48,21 +48,21 @@ public class TestUser {
 		Player p15 = new Player	(	Position.CENTRE,"Samuel Timmins","Otago Nuggets",33		);
 		
 		//adds player to model
-//		controller.fantasyLeagueModel.getPlayers().add(p1);
-//		controller.fantasyLeagueModel.getPlayers().add(p2);
-//		controller.fantasyLeagueModel.getPlayers().add(p3);
-//		controller.fantasyLeagueModel.getPlayers().add(p4);
-//		controller.fantasyLeagueModel.getPlayers().add(p5);
-//		controller.fantasyLeagueModel.getPlayers().add(p6);
-//		controller.fantasyLeagueModel.getPlayers().add(p7);
-//		controller.fantasyLeagueModel.getPlayers().add(p8);
-//		controller.fantasyLeagueModel.getPlayers().add(p9);
-//		controller.fantasyLeagueModel.getPlayers().add(p10);
-//		controller.fantasyLeagueModel.getPlayers().add(p11);
-//		controller.fantasyLeagueModel.getPlayers().add(p12);
-//		controller.fantasyLeagueModel.getPlayers().add(p13);
-//		controller.fantasyLeagueModel.getPlayers().add(p14);
-//		controller.fantasyLeagueModel.getPlayers().add(p15);		
+		controller.fantasyLeagueModel.getPlayers().add(p1);
+		controller.fantasyLeagueModel.getPlayers().add(p2);
+		controller.fantasyLeagueModel.getPlayers().add(p3);
+		controller.fantasyLeagueModel.getPlayers().add(p4);
+		controller.fantasyLeagueModel.getPlayers().add(p5);
+		controller.fantasyLeagueModel.getPlayers().add(p6);
+		controller.fantasyLeagueModel.getPlayers().add(p7);
+		controller.fantasyLeagueModel.getPlayers().add(p8);
+		controller.fantasyLeagueModel.getPlayers().add(p9);
+		controller.fantasyLeagueModel.getPlayers().add(p10);
+		controller.fantasyLeagueModel.getPlayers().add(p11);
+		controller.fantasyLeagueModel.getPlayers().add(p12);
+		controller.fantasyLeagueModel.getPlayers().add(p13);
+		controller.fantasyLeagueModel.getPlayers().add(p14);
+		controller.fantasyLeagueModel.getPlayers().add(p15);		
 		
 		//adds players to the team
 		testteam.addPlayer(p1);

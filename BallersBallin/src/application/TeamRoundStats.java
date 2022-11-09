@@ -2,11 +2,11 @@ package application;
 
 import java.util.ArrayList;
 /**
- * 
+ * Calculates the team round total stats based on the all the players in the team's game stats.
  * @author Ballers Ballin
  * @version 1
  * 
- * Calculates the team round total stats based on the all the players in the team's game stats.
+ * 
  *
  */
 public class TeamRoundStats {

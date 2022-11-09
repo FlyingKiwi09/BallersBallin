@@ -1,7 +1,13 @@
 package application;
 
 import java.util.ArrayList;
-
+/**
+ * Stores a players statistics over a specific season. Includes averages as well as total statistics.
+ * 
+ * @author Ballers Ballin
+ * @version 1
+ *
+ */
 public class PlayerSeasonStats {
 	
 	private ArrayList<PlayerGameStats> gameStatistics;
