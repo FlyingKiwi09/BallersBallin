@@ -59,7 +59,10 @@ public class MyLeaguesScene {
 		root.getChildren().addAll(navBar, title, myLeaguesTableView);
 	}
 	
-	
+	/**
+	 * 
+	 * @param list 
+	 */
 	public void updateLeaguesList(ArrayList<League> list) {
 		// clear previous list
 		myLeaguesTableView.getItems().clear();

@@ -2,9 +2,20 @@ package application;
 
 import java.util.ArrayList;
 
+
+
+/**
+ * Creates a user that will use the fantasyleague application. Each user requires a username and password.
+ *  Each user can only have one team but can be in multiple leagues.
+ * <P>
+ * 
+ * @author Ballers Ballin
+ * @version 1
+ *
+ */
 public class User {
 
-	//Class fields
+	
 	private String 				username,
 								password;
 	private Team 				team;
@@ -13,7 +24,11 @@ public class User {
 	private int					ID;
 	
 	
-	//Constructor
+	/**
+	 * 
+	 * @param username takes the users username
+	 * @param password tales the users password
+	 */
 	User(String username, String password){
 		setUsername(username);
 		setPassword(password);
