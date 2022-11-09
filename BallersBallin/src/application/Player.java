@@ -3,6 +3,14 @@ package application;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+/**
+ * 
+ * @author Ballers Ballin
+ * @version
+ * 
+ * creates a player object which stores player statistics as well as information about the player.
+ *
+ */
 public class Player {
 	
 	static int IDCount = 0;
@@ -28,6 +36,13 @@ public class Player {
 	int historicalTimePlayed;
 	int historicalPlayerScore;
 	
+	/**
+	 * 
+	 * @param p takes the position of the players as an enum.
+	 * @param n takes the full name of the player.
+	 * @param tn takes the NBL team name of the player.
+	 * @param jn takes the jersey number of the player.
+	 */
 	public Player(Position p, String n, String tn, int jn) {
 		
 		this.seasonStats = new ArrayList<PlayerSeasonStats>();
@@ -51,7 +66,9 @@ public class Player {
 		
 	}
 	
-	//price is done w averages
+	/**
+	 * updates the price of the player based on their gameweek results.
+	 */
 	public void updatePrice() {
 		
 		 PlayerSeasonStats currentSeason = seasonStats.get(seasonStats.size()-1);
@@ -71,7 +88,11 @@ public class Player {
 		 
 		
 	}
-	
+	/**
+	 * Tallys up the players seasonal stats with their historical statistics stored in the player class.
+	 * @param pss takes the players season stats.
+	 * 
+	 */
 	public void addSeasonStats(PlayerSeasonStats pss) {
 		
 		seasonStats.add(pss);

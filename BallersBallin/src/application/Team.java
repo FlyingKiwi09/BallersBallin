@@ -2,7 +2,13 @@ package application;
 
 import java.util.ArrayList;
 
-
+/**
+ * 
+ * @author Ballers Ballin
+ * @version 1 
+ * A team consists of a group of players the user has selected for their fantasy league team.
+ *
+ */
 public class Team {
 	private ArrayList<TeamRoundStats> teamRoundHistory  = new ArrayList<TeamRoundStats>();
 	private ArrayList<Player> players = new ArrayList<Player>();
@@ -14,7 +20,10 @@ public class Team {
 	private int spending;
 	
 	
-	
+	/**
+	 * 
+	 * @param name takes the name of the team you want to create.
+	 */
 	public Team(String name) {
 		this.setName(name);
 		this.budget = 50;
@@ -26,6 +35,7 @@ public class Team {
 	public void calculateWeeklyScore() {
 		
 	}
+	
 	
 	public void transfer(Player toBeRemoved, Player toBeAdded) {
 		
@@ -41,6 +51,12 @@ public class Team {
 	}
 	}
 	
+	
+	
+	/**
+	 * 
+	 * @param p takes the player that will be added to the team
+	 */
 	public void addPlayer(Player p) {
 		this.getPlayers().add(p);
 	}

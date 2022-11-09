@@ -2,6 +2,13 @@ package application;
 
 import java.util.ArrayList;
 
+/**
+ * Stores all players, users,leagues,gamestats and season stats.
+ * <p>
+ * @author Ballers Ballin
+ * @version 1
+ *
+ */
 public class FantasyLeagueModel {
 
 	//fields

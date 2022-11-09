@@ -1,5 +1,12 @@
 package application;
-
+/**
+ * 
+ * @author Ballers Ballin
+ * @version 1
+ *  
+ *  <p>
+ *  Stores a rounds statistics for each individual player.
+ */
 public class PlayerGameStats {
 	//Player player;
 	private int round;
@@ -10,6 +17,15 @@ public class PlayerGameStats {
 	
 	private int PlayerGameScore;
 	
+	
+	/**
+	 * 
+	 * @param p takes the total points a player scored in a gameweek
+	 * @param a takes the total assists a player scored in a gameweek
+	 * @param r takes the total rebounds a player scored in a gameweek
+	 * @param tp takes the total time played during the gameweek
+	 * @param round takes the gameweek number
+	 */
 	public PlayerGameStats(int p, int a, int r, int tp, int round) {
 		//this.player = player;
 		this.points = p;

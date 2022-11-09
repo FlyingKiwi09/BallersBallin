@@ -5,9 +5,17 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import javax.swing.JFileChooser;
-
+/**
+ * @author Ballers Ballin
+ * @version 1.0
+ *  
+ * Class used to create and populate the fantasy league model
+ * from data retrieved from the NZNBL website or other source.
+ * 
+ */
 public class FantasyLeagueController {
 	
+
 	FantasyLeagueModel fantasyLeagueModel;
 	loginSignup loginSignupChecker;
 	File filetoPass;
@@ -18,6 +26,7 @@ public class FantasyLeagueController {
 	public FantasyLeagueController(){
 		this.fantasyLeagueModel = new FantasyLeagueModel();
 		this.loginSignupChecker = new loginSignup();
+		
 	}
 	
 	//Getter, setter methods
@@ -34,8 +43,16 @@ public class FantasyLeagueController {
 	 * If a player has changed teams e.g. WGN->AKL, the database should change this 
 	 * field in the player object
 	 */
+<<<<<<< BallersBallin/src/application/FantasyLeagueController.java
+	/**
+	 * Prompts the user to choose a file, this file will be scanned and be used to populate the 
+	 * list of players in the fantasy league model. The scanner will also read in the player statistics 
+	 * and create new playerGameStats as well as update or create PlayerSeason stats.
+	 */
+=======
 	
 	
+>>>>>>> BallersBallin/src/application/FantasyLeagueController.java
 	public void scanData() {
 		
 		System.out.print("scan being called");
