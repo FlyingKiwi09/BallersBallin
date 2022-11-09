@@ -43,16 +43,12 @@ public class FantasyLeagueController {
 	 * If a player has changed teams e.g. WGN->AKL, the database should change this 
 	 * field in the player object
 	 */
-<<<<<<< BallersBallin/src/application/FantasyLeagueController.java
 	/**
 	 * Prompts the user to choose a file, this file will be scanned and be used to populate the 
 	 * list of players in the fantasy league model. The scanner will also read in the player statistics 
 	 * and create new playerGameStats as well as update or create PlayerSeason stats.
 	 */
-=======
-	
-	
->>>>>>> BallersBallin/src/application/FantasyLeagueController.java
+
 	public void scanData() {
 		
 		System.out.print("scan being called");
